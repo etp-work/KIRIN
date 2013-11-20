@@ -1,0 +1,15 @@
+{
+	"name": "KIRIN",
+	"main": "index.html",
+	"version": "1.0.0",
+	"window": {
+		"title": "KIRIN",
+		"icon": "images/kirin.png",
+		"toolbar": false,
+		"frame": true,
+		"width": 800,
+		"height": 650,
+		"position": "center",
+		"resizable": false
+	}
+}

@@ -1,0 +1,15 @@
+{
+  "name": "KIRIN",
+  "private": true,
+  "ignore": [
+    "node_modules",
+    "libs",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.0.3",
+    "bootstrap": "~3.0.2",
+    "angular": "~1.2.1"
+  }
+}

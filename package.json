@@ -1,0 +1,37 @@
+{
+  "name": "KIRIN",
+  "version": "1.0.0",
+  "description": "A powerful tool for MCS development.",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/etp-work/KIRIN.git"
+  },
+  "keywords": [
+    "MCS"
+  ],
+  "author": {
+    "name": "Howard.Zuo",
+    "email": "leftstick@qq.com",
+    "url": "https://github.com/leftstick"
+  },
+  "contributors": [
+    {
+      "name": "Leijun.Yang",
+      "email": "yang.leijun@gmail.com"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/etp-work/KIRIN/issues"
+  },
+  "homepage": "https://github.com/etp-work/KIRIN",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-node-webkit-builder": "~0.1.11",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-template": "~0.2.1",
+    "grunt-contrib-copy": "~0.4.1"
+  }
+}
