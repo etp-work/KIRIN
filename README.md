@@ -19,6 +19,38 @@ And all the guide described below are based on windows 7 OS.
 
 ### Environment setup
 
+#### [Sublime Text2](http://www.sublimetext.com/)(Recommended IDE) configuration
+
+Install [Package Control](https://sublime.wbond.net/), refer to [Installation Guide](https://sublime.wbond.net/installation).
+
+Install [Emmet](http://emmet.io/), refer to [Installation Guide](https://github.com/sergeche/emmet-sublime#how-to-install).
+
+Install [AdvancedNewFile](https://github.com/skuroda/Sublime-AdvancedNewFile), refer to [Installation Guide](https://github.com/skuroda/Sublime-AdvancedNewFile#installation).
+
+Install [jsFormat](https://github.com/jdc0589/JsFormat), refer to [Installation Guide](https://github.com/jdc0589/JsFormat#install).
+
+1. Open sublime text2.
+2. Click `Preferences` -> `Settings - User` to open the setting file.
+3. Copy following configuration to the opened setting file:
+
+```JSON
+{
+    "color_scheme": "Packages/Color Scheme - Default/Blackboard.tmTheme",
+    "font_size": 13,
+    "ignored_packages": [
+        "Vintage"
+    ],
+    "tab_size": 4,
+    "translate_tabs_to_spaces": true,
+    "use_tab_stops": false,
+    "detect_indentation": true,
+    "auto_indent": true,
+    "smart_indent": true,
+    "default_encoding": "UTF-8"
+}
+```
+
+
 #### Git configuration
 
 Run following command in Git Bash and the root folder of KIRIN project:
@@ -37,6 +69,8 @@ git config --local alias.co checkout
 git config --local alias.st status
 git config --local alias.br branch
 ```
+
+Note: `name` and `email` should be modified manually.
 
 #### Install Grunt Command Line Interface
 
