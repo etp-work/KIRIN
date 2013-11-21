@@ -90,6 +90,23 @@ module.exports = function(grunt) {
             dev_external: {
                 src: 'build/generated/**/*'
             }
+        },
+        watch: {
+            dev: {
+                files: ['src/html/**/*', 'src/js/**/*', 'src/css/**/*', 'src/images/**/*'],
+                tasks: ['clean:generated', 'copy:dev', 'template:dev'],
+                options: {
+                    livereload: true
+                }
+            }
+        },
+        connect: {
+            server: {
+                options: {
+                    port: 9898,
+                    base: 'build/generated/'
+                }
+            }
         }
     });
 
@@ -97,6 +114,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-template');
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-connect');
 
-    grunt.registerTask('default', ['clean:release', 'clean:generated', 'copy:dev', 'template:dev', 'nodewebkit:dev_internal']);
+    grunt.registerTask('default', ['clean:generated', 'copy:dev', 'template:dev', 'connect:server', 'watch:dev']);
+    grunt.registerTask('dev', ['clean:release', 'clean:generated', 'copy:dev', 'template:dev', 'nodewebkit:dev_internal']);
 };
