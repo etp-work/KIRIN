@@ -114,7 +114,11 @@ bower install
 
 Note: above command will only install the dependencies defined with `dependencies` attribute in `bower.json`.
 
-#### Generate KIRIN .exe application
+#### Development without `nodejs` features
+
+If you are working on some features which has nothing to do with `nodejs`, it's better to debug your code in browser.
+
+To debug with browser, it requires you to install [livereload](http://livereload.com/) addon for the browsers.
 
 Run following command in Git Bash and the root folder of KIRIN project:
 
@@ -122,8 +126,21 @@ Run following command in Git Bash and the root folder of KIRIN project:
 grunt
 ```
 
-Note: this will execute the default task defined in `Gruntfile.js`.
+Note: this will execute the `default` task defined in `Gruntfile.js`.
+
+The `default` task compile the source code to `%root_folder%/build/generated/` folder, and start up a local static file server on `127.0.0.1:9898`. Open a browser which you have `livereload` addon installed, visite the url `http://127.0.0.1:9898/`, and enable the `livereload` addon.
+
+Now, you can debug the app within browser. And once you make change to the source code, grunt will re-compile the them to `%root_folder%/build/generated/` folder, and the browser will be refreshed automatically because of the `livereload` feature.
+
+#### Generate KIRIN .exe application
+
+Run following command in Git Bash and the root folder of KIRIN project:
+
+```shell
+grunt dev
+```
+
+Note: this will execute the `dev` task defined in `Gruntfile.js`.
 
 The generated `.exe` file locate in `%root_folder%/build/releases/KIRIN/win/KIRIN/`. Double click `KIRIN.exe` to launch it.
-
 
