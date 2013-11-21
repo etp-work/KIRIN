@@ -17,6 +17,8 @@ And all the guide described below are based on windows 7 OS.
 
 <b>[Node-webkit](https://github.com/rogerwang/node-webkit)</b> v0.8.0(or above) as desktop engine for rendering purpose.
 
+<b>[Livereload](http://livereload.com/)</b> v2.0.8(or above) as debug assistant for each browser.
+
 ### Environment setup
 
 #### [Sublime Text2](http://www.sublimetext.com/)(Recommended IDE) configuration
@@ -50,6 +52,9 @@ Install [jsFormat](https://github.com/jdc0589/JsFormat), refer to [Installation 
 }
 ```
 
+#### Livereload addon installation
+
+Install [Livereload](http://livereload.com/), refer to [Installation Guide](http://feedback.livereload.com/knowledgebase/articles/86242-how-do-i-install-and-use-the-browser-extensions-).
 
 #### Git configuration
 
