@@ -7,14 +7,18 @@ module.exports = function(grunt) {
             release: ['build/releases'],
             generated: ['build/generated']
         },
-        concat: {
-            dev: {
-                src: ['src/js/core/BootLoader.js', 'src/js/controllers/*.js'],
-                dest: 'build/generated/js/allInOneJS.js'
+        uglify: {
+            options: {
+                banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %> */'
             },
             dist: {
-                src: ['libs/jquery/jquery.min.js', 'libs/bootstrap/dist/js/bootstrap.min.js', 'libs/angular/angular.min.js', 'libs/angular-route/angular-route.min.js', 'libs/ng-grid/ng-grid-2.0.7.min.js', 'src/js/core/BootLoader.js', 'src/js/controllers/*.js'],
-                dest: 'build/generated/js/allInOneJS.min.js'
+                files: [{
+                    expand: true,
+                    cwd: 'src/',
+                    src: ['js/**/*.js'],
+                    dest: 'build/generated/tmp/',
+                    ext: '.min.js'
+                }]
             }
         },
         sass: {
@@ -23,7 +27,7 @@ module.exports = function(grunt) {
                     expand: true,
                     cwd: 'src/',
                     src: ['css/**/*.scss'],
-                    dest: 'build/generated/',
+                    dest: 'build/generated/tmp/',
                     ext: '.css'
                 }]
             },
@@ -32,9 +36,29 @@ module.exports = function(grunt) {
                     expand: true,
                     cwd: 'src/',
                     src: ['css/**/*.scss'],
-                    dest: 'build/generated/',
+                    dest: 'build/generated/tmp/',
                     ext: '.css'
                 }]
+            }
+        },
+        cssmin: {
+            dist: {
+                files: {
+                    'build/generated/css/allInOneCss.min.css': ['build/generated/tmp/css/**/*.css']
+                }
+            }
+        },
+        concat: {
+            dev: {
+                files: {
+                    'build/generated/js/allInOneJS.js': ['src/js/core/BootLoader.js', 'src/js/controllers/*.js'],
+                    'build/generated/css/allInOneCss.css': ['build/generated/tmp/css/**/*.css']
+                }
+            },
+            dist: {
+                files: {
+                    'build/generated/js/allInOneJS.min.js': ['build/generated/tmp/js/core/BootLoader.min.js', 'build/generated/tmp/js/controllers/*.min.js']
+                }
             }
         },
         copy: {
@@ -70,9 +94,21 @@ module.exports = function(grunt) {
             dist: {
                 files: [{
                     expand: true,
+                    cwd: 'libs/',
+                    src: ['jquery/jquery.min.js', 'bootstrap/dist/js/bootstrap.min.js', 'angular/angular.min.js', 'angular-route/angular-route.min.js', 'ng-grid/ng-grid-2.0.7.min.js'],
+                    dest: 'build/generated/libs/',
+                    flatten: true
+                }, {
+                    expand: true,
                     cwd: 'libs/bootstrap/dist/',
                     src: ['fonts/*'],
                     dest: 'build/generated/'
+                }, {
+                    expand: true,
+                    cwd: 'libs/',
+                    src: ['bootstrap/dist/css/*.min.css', 'ng-grid/ng-grid.min.css'],
+                    dest: 'build/generated/css/',
+                    flatten: true
                 }, {
                     expand: true,
                     cwd: 'src/',
@@ -89,7 +125,7 @@ module.exports = function(grunt) {
                 options: {
                     data: {
                         scripts: ['libs/jquery.js', 'libs/bootstrap.js', 'libs/angular.js', 'libs/angular-route.js', 'libs/ng-grid-2.0.7.debug.js', 'js/allInOneJS.js'],
-                        csss: ['css/bootstrap.css', 'css/bootstrap-theme.css', 'css/ng-grid.css', 'css/style.css']
+                        csss: ['css/bootstrap.css', 'css/bootstrap-theme.css', 'css/ng-grid.css', 'css/allInOneCss.css']
                     }
                 },
                 files: [{
@@ -103,8 +139,8 @@ module.exports = function(grunt) {
             dist: {
                 options: {
                     data: {
-                        scripts: ["js/allInOneJS.min.js"],
-                        csss: ['css/allInOne.min.css']
+                        scripts: ['libs/jquery.min.js', 'libs/bootstrap.min.js', 'libs/angular.min.js', 'libs/angular-route.min.js', 'libs/ng-grid-2.0.7.min.js', "js/allInOneJS.min.js"],
+                        csss: ['css/bootstrap.min.css', 'css/bootstrap-theme.min.css', 'css/ng-grid.min.css', 'css/allInOneCss.min.css']
                     }
                 },
                 files: [{
@@ -163,7 +199,11 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
 
-    grunt.registerTask('default', ['clean:generated', 'concat:dev', 'sass:dev', 'copy:dev', 'template:dev', 'connect:server', 'watch:dev']);
+    grunt.registerTask('default', ['clean:generated', 'sass:dev', 'concat:dev', 'copy:dev', 'template:dev', 'connect:server', 'watch:dev']);
     grunt.registerTask('dev', ['clean:release', 'clean:generated', 'concat:dev', 'sass:dev', 'copy:dev', 'template:dev', 'nodewebkit:dev_internal']);
+
+    grunt.registerTask('distInt', ['clean:release', 'clean:generated', 'uglify:dist', 'sass:dist', 'cssmin:dist', 'concat:dist', 'copy:dist', 'template:dist']);
 };
