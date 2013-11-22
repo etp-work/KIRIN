@@ -175,7 +175,7 @@ module.exports = function(grunt) {
         watch: {
             dev: {
                 files: ['src/html/**/*', 'src/js/**/*', 'src/css/**/*', 'src/images/**/*'],
-                tasks: ['clean:generated', 'sass:dev', 'copy:dev', 'template:dev'],
+                tasks: ['clean:generated', 'sass:dev', 'concat:dev', 'copy:dev', 'template:dev'],
                 options: {
                     livereload: true
                 }

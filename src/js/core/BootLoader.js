@@ -7,16 +7,16 @@ var mainApp = angular.module('mainApp', ['ngRoute']);
 mainApp.config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.when('/compile', {
-            template: 'partials/compile.html',
+            templateUrl: 'partials/compile.html',
             controller: 'CompileController'
         }).when('/clean', {
-            template: 'partials/clean.html',
+            templateUrl: 'partials/clean.html',
             controller: 'CleanController'
         }).when('/test', {
-            template: 'partials/test.html',
+            templateUrl: 'partials/test.html',
             controller: 'TestController'
         }).when('/setting', {
-            template: 'partials/setting.html',
+            templateUrl: 'partials/setting.html',
             controller: 'SettingController'
         }).otherwise({
             redirectTo: '/setting'
