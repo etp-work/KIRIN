@@ -14,10 +14,17 @@ module.exports = function(grunt) {
             dist: {
                 files: [{
                     expand: true,
-                    cwd: 'src/',
-                    src: ['js/**/*.js'],
-                    dest: 'build/generated/tmp/',
+                    cwd: 'src/core/',
+                    src: ['*.js'],
+                    dest: 'build/generated/tmp/js/',
                     ext: '.min.js'
+                }, {
+                    expand: true,
+                    cwd: 'src/apps/',
+                    src: ['**/js/*.js'],
+                    dest: 'build/generated/tmp/js/',
+                    ext: '.min.js',
+                    flatten: true
                 }]
             }
         },
@@ -26,38 +33,40 @@ module.exports = function(grunt) {
                 files: [{
                     expand: true,
                     cwd: 'src/',
-                    src: ['css/**/*.scss'],
-                    dest: 'build/generated/tmp/',
-                    ext: '.css'
+                    src: ['css/*.scss', 'apps/**/css/*.scss'],
+                    dest: 'build/generated/tmp/css/',
+                    ext: '.css',
+                    flatten: true
                 }]
             },
             dist: {
                 files: [{
                     expand: true,
                     cwd: 'src/',
-                    src: ['css/**/*.scss'],
-                    dest: 'build/generated/tmp/',
-                    ext: '.css'
+                    src: ['css/*.scss', 'apps/**/css/*.scss'],
+                    dest: 'build/generated/tmp/css/',
+                    ext: '.css',
+                    flatten: true
                 }]
             }
         },
         cssmin: {
             dist: {
                 files: {
-                    'build/generated/css/allInOneCss.min.css': ['build/generated/tmp/css/**/*.css']
+                    'build/generated/css/allInOneCss.min.css': ['build/generated/tmp/css/*.css']
                 }
             }
         },
         concat: {
             dev: {
                 files: {
-                    'build/generated/js/allInOneJS.js': ['src/js/core/BootLoader.js', 'src/js/controllers/*.js'],
-                    'build/generated/css/allInOneCss.css': ['build/generated/tmp/css/**/*.css']
+                    'build/generated/libs/allInOneJS.js': ['src/core/BootLoader.js', 'src/apps/**/js/**/*.js'],
+                    'build/generated/css/allInOneCss.css': ['build/generated/tmp/css/*.css']
                 }
             },
             dist: {
                 files: {
-                    'build/generated/js/allInOneJS.min.js': ['build/generated/tmp/js/core/BootLoader.min.js', 'build/generated/tmp/js/controllers/*.min.js']
+                    'build/generated/libs/allInOneJS.min.js': ['build/generated/tmp/js/BootLoader.min.js', 'build/generated/tmp/js/*.min.js']
                 }
             }
         },
@@ -84,8 +93,9 @@ module.exports = function(grunt) {
                 }, {
                     expand: true,
                     cwd: 'src/',
-                    src: ['images/**/*'],
-                    dest: 'build/generated/'
+                    src: ['images/*', 'apps/**/images/*'],
+                    dest: 'build/generated/images/',
+                    flatten: true
                 }, {
                     src: 'src/config/package.json',
                     dest: 'build/generated/package.json'
@@ -112,8 +122,9 @@ module.exports = function(grunt) {
                 }, {
                     expand: true,
                     cwd: 'src/',
-                    src: ['images/*'],
-                    dest: 'build/generated/'
+                    src: ['images/*', 'apps/**/images/*'],
+                    dest: 'build/generated/images/',
+                    flatten: true
                 }, {
                     src: 'src/config/package.json',
                     dest: 'build/generated/package.json'
@@ -124,30 +135,42 @@ module.exports = function(grunt) {
             dev: {
                 options: {
                     data: {
-                        scripts: ['libs/jquery.js', 'libs/bootstrap.js', 'libs/angular.js', 'libs/angular-route.js', 'libs/ng-grid-2.0.7.debug.js', 'js/allInOneJS.js'],
+                        scripts: ['libs/jquery.js', 'libs/bootstrap.js', 'libs/angular.js', 'libs/angular-route.js', 'libs/ng-grid-2.0.7.debug.js', 'libs/allInOneJS.js'],
                         csss: ['css/bootstrap.css', 'css/bootstrap-theme.css', 'css/ng-grid.css', 'css/allInOneCss.css']
                     }
                 },
                 files: [{
                     expand: true,
-                    cwd: 'src/html/',
-                    src: ['**/*.tpl'],
+                    cwd: 'src/',
+                    src: ['index.html.tpl'],
                     dest: 'build/generated/',
+                    ext: '.html'
+                }, {
+                    expand: true,
+                    cwd: 'src/apps/',
+                    src: ['**/html/*.tpl'],
+                    dest: 'build/generated/partials/',
                     ext: '.html'
                 }]
             },
             dist: {
                 options: {
                     data: {
-                        scripts: ['libs/jquery.min.js', 'libs/bootstrap.min.js', 'libs/angular.min.js', 'libs/angular-route.min.js', 'libs/ng-grid-2.0.7.min.js', "js/allInOneJS.min.js"],
+                        scripts: ['libs/jquery.min.js', 'libs/bootstrap.min.js', 'libs/angular.min.js', 'libs/angular-route.min.js', 'libs/ng-grid-2.0.7.min.js', "libs/allInOneJS.min.js"],
                         csss: ['css/bootstrap.min.css', 'css/bootstrap-theme.min.css', 'css/ng-grid.min.css', 'css/allInOneCss.min.css']
                     }
                 },
                 files: [{
                     expand: true,
-                    cwd: 'src/html/',
-                    src: ['**/*.tpl'],
+                    cwd: 'src/',
+                    src: ['index.html.tpl'],
                     dest: 'build/generated/',
+                    ext: '.html'
+                }, {
+                    expand: true,
+                    cwd: 'src/apps/',
+                    src: ['**/html/*.tpl'],
+                    dest: 'build/generated/partials/',
                     ext: '.html'
                 }]
             }
