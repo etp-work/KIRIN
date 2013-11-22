@@ -2,7 +2,7 @@
  * Bootloader
  */
 
-var mainApp = angular.module('mainApp', ['ngRoute']);
+var mainApp = angular.module('mainApp', ['ngRoute', 'ngGrid']);
 
 mainApp.config(['$routeProvider',
     function($routeProvider) {
@@ -19,7 +19,7 @@ mainApp.config(['$routeProvider',
             templateUrl: 'partials/setting.html',
             controller: 'SettingController'
         }).otherwise({
-            redirectTo: '/setting'
+            redirectTo: '/test'
         });
     }
 ]);
