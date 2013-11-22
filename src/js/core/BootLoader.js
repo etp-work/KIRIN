@@ -16,7 +16,7 @@ mainApp.config(['$routeProvider',
             template: 'partials/test.html',
             controller: 'TestController'
         }).when('/setting', {
-            template: 'partials/Setting.html',
+            template: 'partials/setting.html',
             controller: 'SettingController'
         }).otherwise({
             redirectTo: '/setting'
