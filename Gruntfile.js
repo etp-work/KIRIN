@@ -13,8 +13,8 @@ module.exports = function(grunt) {
                 dest: 'build/generated/js/allInOneJS.js'
             },
             dist: {
-                src: ['src/js/core/BootLoader.js', 'src/js/controllers/*.js'],
-                dest: 'build/generated/js/allInOneJS.js'
+                src: ['libs/jquery/jquery.min.js', 'libs/bootstrap/dist/js/bootstrap.min.js', 'libs/angular/angular.min.js', 'libs/angular-route/angular-route.min.js', 'libs/ng-grid/ng-grid-2.0.7.min.js', 'src/js/core/BootLoader.js', 'src/js/controllers/*.js'],
+                dest: 'build/generated/js/allInOneJS.min.js'
             }
         },
         sass: {
@@ -22,7 +22,7 @@ module.exports = function(grunt) {
                 files: [{
                     expand: true,
                     cwd: 'src/',
-                    src: ['css/*.scss'],
+                    src: ['css/*/*.scss'],
                     dest: 'build/generated/',
                     ext: '.css'
                 }]
@@ -31,7 +31,7 @@ module.exports = function(grunt) {
                 files: [{
                     expand: true,
                     cwd: 'src/',
-                    src: ['css/*.scss'],
+                    src: ['css/**/*.scss'],
                     dest: 'build/generated/',
                     ext: '.css'
                 }]
@@ -88,7 +88,7 @@ module.exports = function(grunt) {
             dev: {
                 options: {
                     data: {
-                        scripts: ['libs/jquery.js', 'libs/bootstrap.js', 'libs/angular.js', 'libs/angular-route.js' ,'libs/ng-grid-2.0.7.debug.js', 'js/allInOneJS.js'],
+                        scripts: ['libs/jquery.js', 'libs/bootstrap.js', 'libs/angular.js', 'libs/angular-route.js', 'libs/ng-grid-2.0.7.debug.js', 'js/allInOneJS.js'],
                         csss: ['css/bootstrap.css', 'css/bootstrap-theme.css', 'css/ng-grid.css', 'css/style.css']
                     }
                 },
@@ -103,13 +103,17 @@ module.exports = function(grunt) {
             dist: {
                 options: {
                     data: {
-                        scripts: ["apps/allInOne.min.js"],
+                        scripts: ["js/allInOneJS.min.js"],
                         csss: ['css/allInOne.min.css']
                     }
                 },
-                files: {
-                    'build/generated/index.html': ['src/html/index.html.tpl']
-                }
+                files: [{
+                    expand: true,
+                    cwd: 'src/html/',
+                    src: ['**/*.tpl'],
+                    dest: 'build/generated/',
+                    ext: '.html'
+                }]
             }
         },
         nodewebkit: {
