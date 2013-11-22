@@ -32,18 +32,25 @@ module.exports = function(grunt) {
                 files: [{
                     expand: true,
                     cwd: 'libs/',
-                    src: ['jquery/jquery.js', 'bootstrap/dist/js/bootstrap.js', 'angular/angular.js'],
+                    src: ['jquery/jquery.js', 'bootstrap/dist/js/bootstrap.js', 'angular/angular.js', 'angular-route/angular-route.js' ,'ng-grid/ng-grid-2.0.7.debug.js'],
                     dest: 'build/generated/libs/',
                     flatten: true
                 }, {
                     expand: true,
-                    cwd: 'libs/bootstrap/dist/',
-                    src: ['fonts/*', 'css/*.css', '!css/*.min.css'],
-                    dest: 'build/generated/'
+                    cwd: 'libs/',
+                    src: ['bootstrap/dist/fonts/*'],
+                    dest: 'build/generated/fonts/',
+                    flatten: true
+                }, {
+                    expand: true,
+                    cwd: 'libs/',
+                    src: ['bootstrap/dist/css/*.css', '!bootstrap/dist/css/*.min.css', 'ng-grid/ng-grid.css'],
+                    dest: 'build/generated/css/',
+                    flatten: true
                 }, {
                     expand: true,
                     cwd: 'src/',
-                    src: ['images/*', 'js/*'],
+                    src: ['images/**/*', 'js/**/*'],
                     dest: 'build/generated/'
                 }, {
                     src: 'src/config/package.json',
@@ -71,8 +78,8 @@ module.exports = function(grunt) {
             dev: {
                 options: {
                     data: {
-                        scripts: ['js/core/BootLoader.js', 'libs/jquery.js', 'libs/bootstrap.js', 'libs/angular.js'],
-                        csss: ['css/bootstrap.css', 'css/bootstrap-theme.css', 'css/style.css']
+                        scripts: ['libs/jquery.js', 'libs/bootstrap.js', 'libs/angular.js', 'libs/angular-route.js' ,'libs/ng-grid-2.0.7.debug.js', 'js/core/BootLoader.js'],
+                        csss: ['css/bootstrap.css', 'css/bootstrap-theme.css', 'css/ng-grid.css', 'css/style.css']
                     }
                 },
                 files: {
