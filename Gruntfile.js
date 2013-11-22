@@ -42,7 +42,7 @@ module.exports = function(grunt) {
                 files: [{
                     expand: true,
                     cwd: 'libs/',
-                    src: ['jquery/jquery.js', 'bootstrap/dist/js/bootstrap.js', 'angular/angular.js', 'angular-route/angular-route.js' ,'ng-grid/ng-grid-2.0.7.debug.js'],
+                    src: ['jquery/jquery.js', 'bootstrap/dist/js/bootstrap.js', 'angular/angular.js', 'angular-route/angular-route.js', 'ng-grid/ng-grid-2.0.7.debug.js'],
                     dest: 'build/generated/libs/',
                     flatten: true
                 }, {
@@ -92,9 +92,13 @@ module.exports = function(grunt) {
                         csss: ['css/bootstrap.css', 'css/bootstrap-theme.css', 'css/ng-grid.css', 'css/style.css']
                     }
                 },
-                files: {
-                    'build/generated/index.html': ['src/html/index.html.tpl']
-                }
+                files: [{
+                    expand: true,
+                    cwd: 'src/html/',
+                    src: ['**/*.tpl'],
+                    dest: 'build/generated/',
+                    ext: '.html'
+                }]
             },
             dist: {
                 options: {
