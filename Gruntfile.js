@@ -7,6 +7,16 @@ module.exports = function(grunt) {
             release: ['build/releases'],
             generated: ['build/generated']
         },
+        concat: {
+            dev: {
+                src: ['src/js/core/BootLoader.js', 'src/js/controllers/*.js'],
+                dest: 'build/generated/js/allInOneJS.js'
+            },
+            dist: {
+                src: ['src/js/core/BootLoader.js', 'src/js/controllers/*.js'],
+                dest: 'build/generated/js/allInOneJS.js'
+            }
+        },
         sass: {
             dev: {
                 files: [{
@@ -78,7 +88,7 @@ module.exports = function(grunt) {
             dev: {
                 options: {
                     data: {
-                        scripts: ['libs/jquery.js', 'libs/bootstrap.js', 'libs/angular.js', 'libs/angular-route.js' ,'libs/ng-grid-2.0.7.debug.js', 'js/core/BootLoader.js'],
+                        scripts: ['libs/jquery.js', 'libs/bootstrap.js', 'libs/angular.js', 'libs/angular-route.js' ,'libs/ng-grid-2.0.7.debug.js', 'js/allInOneJS.js'],
                         csss: ['css/bootstrap.css', 'css/bootstrap-theme.css', 'css/ng-grid.css', 'css/style.css']
                     }
                 },
@@ -139,12 +149,13 @@ module.exports = function(grunt) {
 
     grunt.loadNpmTasks('grunt-node-webkit-builder');
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-template');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-connect');
-    grunt.loadNpmTasks('grunt-contrib-sass');
 
-    grunt.registerTask('default', ['clean:generated', 'sass:dev', 'copy:dev', 'template:dev', 'connect:server', 'watch:dev']);
-    grunt.registerTask('dev', ['clean:release', 'clean:generated', 'sass:dev', 'copy:dev', 'template:dev', 'nodewebkit:dev_internal']);
+    grunt.registerTask('default', ['clean:generated', 'concat:dev', 'sass:dev', 'copy:dev', 'template:dev', 'connect:server', 'watch:dev']);
+    grunt.registerTask('dev', ['clean:release', 'clean:generated', 'concat:dev', 'sass:dev', 'copy:dev', 'template:dev', 'nodewebkit:dev_internal']);
 };
