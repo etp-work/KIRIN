@@ -6,21 +6,13 @@
 	<title>KIRIN</title>
 	<% _.forEach(csss, function(css) { %><link rel="stylesheet" href="<%- css %>"><%- "\n" %><% }); %>
 </head>
-<body id="main">
-	<div id="menu" ng-controller="MainMenuController">
-		<ul>
-			<li>
-				<input ng-model="commandLine">
-				<button ng-click="build(commandLine)">Build Portal</button>
-			</li>
-			<li>Deploy</li>
-			<li>Clean</li>
-			<li>Test</li>
-			<li>Settings</li>
-		</ul>
+<body>
+	<div id="main">
+		<div id="header">&nbsp;</div>
+		<div id="sidebar">&nbsp;</div>
+		<div id="content" ng-view>&nbsp;</div>
+		<div id="footer">&nbsp;</div>
 	</div>
-	<div ng-view></div>
-	<div id="console"></div>
 </body>
 </html>
 <% _.forEach(scripts, function(script) { %><script type="text/javascript" src="<%- script %>"></script><%- "\n" %><% }); %>
