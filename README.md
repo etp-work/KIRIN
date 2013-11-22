@@ -15,6 +15,8 @@ And all the guide described below are based on windows 7 OS.
 
 <b>[Bower](http://bower.io/)</b> v1.2.7(or above) as project dependency manager should be installed via [npm](https://npmjs.org/).
 
+<b>[Sass](http://sass-lang.com/)</b> v3.2.12(or above) as CSS extension language.
+
 <b>[Node-webkit](https://github.com/rogerwang/node-webkit)</b> v0.8.0(or above) as desktop engine for rendering purpose.
 
 <b>[Livereload](http://livereload.com/)</b> v2.0.8(or above) as debug assistant for each browser.
@@ -109,6 +111,16 @@ npm install
 
 Note: above command will only install the modules defined with `devDependencies` attribute in `package.json`.
 
+#### Install Sass
+
+Install [Ruby](http://rubyinstaller.org/downloads)
+Add Ruby executables to your PATH
+Open Start Command Prompt with Ruby and run following command:
+
+```shell
+gem install sass
+```
+
 #### Install project dependencies
 
 Run following command in Git Bash and the root folder of KIRIN project:
@@ -124,6 +136,8 @@ Note: above command will only install the dependencies defined with `dependencie
 If you are working on some features which has nothing to do with `nodejs`, it's better to debug your code in browser.
 
 To debug with browser, it requires you to install [livereload](http://livereload.com/) addon for the browsers.
+
+#### Generate KIRIN .exe application
 
 Run following command in Git Bash and the root folder of KIRIN project:
 

@@ -18,6 +18,10 @@
     {
       "name": "Leijun.Yang",
       "email": "yang.leijun@gmail.com"
+    },
+    {
+      "name": "Jack.Li",
+      "email": "haichong20@gmail.com"
     }
   ],
   "bugs": {
@@ -34,6 +38,7 @@
     "grunt-template": "~0.2.1",
     "grunt-contrib-copy": "~0.4.1",
     "grunt-contrib-connect": "~0.5.0",
-    "grunt-contrib-watch": "~0.5.3"
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-sass": "~0.5.0"
   }
 }

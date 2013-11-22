@@ -1,14 +1,18 @@
 <!doctype html>
-<html lang="en">
+<html xmlns:ng="http://angularjs.org">
 <head>
 	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 	<title>KIRIN</title>
 	<% _.forEach(csss, function(css) { %><link rel="stylesheet" href="<%- css %>"><%- "\n" %><% }); %>
 </head>
 <body id="main">
-	<div id="menu">
+	<div id="menu" ng-controller="MainMenuController">
 		<ul>
-			<li>Build</li>
+			<li>
+				<input ng-model="commandLine">
+				<button ng-click="build(commandLine)">Build Portal</button>
+			</li>
 			<li>Deploy</li>
 			<li>Clean</li>
 			<li>Test</li>

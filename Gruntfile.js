@@ -7,6 +7,26 @@ module.exports = function(grunt) {
             release: ['build/releases'],
             generated: ['build/generated']
         },
+        sass: {
+            dev: {
+                files: [{
+                    expand: true,
+                    cwd: 'src/',
+                    src: ['css/*.scss'],
+                    dest: 'build/generated/',
+                    ext: '.css'
+                }]
+            },
+            dist: {
+                files: [{
+                    expand: true,
+                    cwd: 'src/',
+                    src: ['css/*.scss'],
+                    dest: 'build/generated/',
+                    ext: '.css'
+                }]
+            }
+        },
         copy: {
             dev: {
                 files: [{
@@ -23,7 +43,7 @@ module.exports = function(grunt) {
                 }, {
                     expand: true,
                     cwd: 'src/',
-                    src: ['css/*', 'images/*', 'js/*'],
+                    src: ['images/*', 'js/*'],
                     dest: 'build/generated/'
                 }, {
                     src: 'src/config/package.json',
@@ -51,8 +71,8 @@ module.exports = function(grunt) {
             dev: {
                 options: {
                     data: {
-                        scripts: ['libs/jquery.js', 'libs/bootstrap.js', 'libs/angular.js'],
-                        csss: ['css/bootstrap.css', 'css/bootstrap-theme.css']
+                        scripts: ['js/core/BootLoader.js', 'libs/jquery.js', 'libs/bootstrap.js', 'libs/angular.js'],
+                        csss: ['css/bootstrap.css', 'css/bootstrap-theme.css', 'css/style.css']
                     }
                 },
                 files: {
@@ -94,7 +114,7 @@ module.exports = function(grunt) {
         watch: {
             dev: {
                 files: ['src/html/**/*', 'src/js/**/*', 'src/css/**/*', 'src/images/**/*'],
-                tasks: ['clean:generated', 'copy:dev', 'template:dev'],
+                tasks: ['clean:generated', 'sass:dev', 'copy:dev', 'template:dev'],
                 options: {
                     livereload: true
                 }
@@ -116,7 +136,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-contrib-sass');
 
-    grunt.registerTask('default', ['clean:generated', 'copy:dev', 'template:dev', 'connect:server', 'watch:dev']);
-    grunt.registerTask('dev', ['clean:release', 'clean:generated', 'copy:dev', 'template:dev', 'nodewebkit:dev_internal']);
+    grunt.registerTask('default', ['clean:generated', 'sass:dev', 'copy:dev', 'template:dev', 'connect:server', 'watch:dev']);
+    grunt.registerTask('dev', ['clean:release', 'clean:generated', 'sass:dev', 'copy:dev', 'template:dev', 'nodewebkit:dev_internal']);
 };
