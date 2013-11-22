@@ -60,7 +60,7 @@ module.exports = function(grunt) {
                 }, {
                     expand: true,
                     cwd: 'src/',
-                    src: ['images/**/*', 'js/**/*'],
+                    src: ['images/**/*'],
                     dest: 'build/generated/'
                 }, {
                     src: 'src/config/package.json',

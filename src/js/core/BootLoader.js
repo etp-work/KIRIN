@@ -3,7 +3,7 @@
  */
 
 var mainApp = angular.module('mainApp', ['ngRoute']);
-angular.bootstrap(document, ['mainApp']);
+
 mainApp.config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.when('/compile', {
