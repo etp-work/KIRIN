@@ -226,7 +226,10 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
 
     grunt.registerTask('default', ['clean:generated', 'sass:dev', 'concat:dev', 'copy:dev', 'template:dev', 'connect:server', 'watch:dev']);
-    grunt.registerTask('dev', ['clean:release', 'clean:generated', 'concat:dev', 'sass:dev', 'copy:dev', 'template:dev', 'nodewebkit:dev_internal']);
+    grunt.registerTask('exei', ['clean:generated', 'sass:dev', 'concat:dev', 'copy:dev', 'template:dev', 'nodewebkit:dev_internal']);
+    grunt.registerTask('exee', ['clean:generated', 'sass:dev', 'concat:dev', 'copy:dev', 'template:dev', 'nodewebkit:dev_external']);
 
-    grunt.registerTask('distInt', ['clean:release', 'clean:generated', 'uglify:dist', 'sass:dist', 'cssmin:dist', 'concat:dist', 'copy:dist', 'template:dist']);
+    grunt.registerTask('dist', ['clean:release', 'clean:generated', 'uglify:dist', 'sass:dist', 'cssmin:dist', 'concat:dist', 'copy:dist', 'template:dist', 'connect:server', 'watch:dev']);
+    grunt.registerTask('disti', ['clean:release', 'clean:generated', 'uglify:dist', 'sass:dist', 'cssmin:dist', 'concat:dist', 'copy:dist', 'template:dist', 'nodewebkit:dev_internal']);
+    grunt.registerTask('diste', ['clean:release', 'clean:generated', 'uglify:dist', 'sass:dist', 'cssmin:dist', 'concat:dist', 'copy:dist', 'template:dist', 'nodewebkit:dev_external']);
 };
