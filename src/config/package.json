@@ -5,11 +5,11 @@
 	"window": {
 		"title": "KIRIN",
 		"icon": "images/kirin.png",
-		"toolbar": false,
+		"toolbar": true,
 		"frame": true,
 		"width": 800,
 		"height": 650,
 		"position": "center",
-		"resizable": false
+		"resizable": true
 	}
 }
