@@ -1,9 +1,12 @@
-<div class="panel panel-default">
-	<div class="panel-heading">
-    	<h3 class="panel-title">Test Suites</h3>
-  	</div>
-	<div class="panel-body">
-		<div class="gridStyle" ng-grid="gridOptions"></div>
-	</div>
-	<div class="panel-footer"></div>
-</div>
+<form class="navbar-form" role="search">
+    <div class="form-group">
+        <input type="text" class="form-control" placeholder="TestSuite Filter" ng-model="filterTestSuite">
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" placeholder="TestCase Filter" ng-model="filterTestCase">
+    </div>
+    <button class="btn btn-default" ng-click="activateFilter()"><span class="glyphicon glyphicon-search"></span></button>
+</form>
+<H1 />
+<div class="gridStyle" ng-grid="gridOptions"></div>
+	

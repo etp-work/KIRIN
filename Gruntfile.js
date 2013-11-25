@@ -97,6 +97,12 @@ module.exports = function(grunt) {
                     dest: 'build/generated/images/',
                     flatten: true
                 }, {
+                    expand: true,
+                    cwd: 'src/',
+                    src: ['apps/**/data/*'],
+                    dest: 'build/generated/data/',
+                    flatten: true
+                }, {
                     src: 'src/config/package.json',
                     dest: 'build/generated/package.json'
                 }]
@@ -125,6 +131,12 @@ module.exports = function(grunt) {
                     cwd: 'src/',
                     src: ['images/*', 'apps/**/images/*'],
                     dest: 'build/generated/images/',
+                    flatten: true
+                }, {
+                    expand: true,
+                    cwd: 'src/',
+                    src: ['apps/**/data/*'],
+                    dest: 'build/generated/data/',
                     flatten: true
                 }, {
                     src: 'src/config/package.json',

@@ -1,0 +1,25 @@
+[{
+	"ID": "1",
+	"TestSuite": "Channel_US3_Tests",
+	"TestCase": "testGetAllChannels",
+	"TestArea": "Channels",
+	"TestResult": "OK",
+	"Time": 0.5,
+	"Message": "OK"
+}, {
+	"ID": "2",
+	"TestSuite": "Channel_US3_Tests",
+	"TestCase": "testGetAllChannelsForSpecificDevice",
+	"TestArea": "Channels",
+	"TestResult": "OK",
+	"Time": 0.2,
+	"Message": "OK"
+}, {
+	"ID": "3",
+	"TestSuite": "Channel_US4_Tests",
+	"TestCase": "testGetPlayableChannels",
+	"TestArea": "Channels",
+	"TestResult": "OK",
+	"Time": 0.4,
+	"Message": "OK"
+}]
