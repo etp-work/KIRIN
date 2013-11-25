@@ -81,13 +81,13 @@ module.exports = function(grunt) {
                 }, {
                     expand: true,
                     cwd: 'libs/',
-                    src: ['bootstrap/dist/fonts/*'],
+                    src: ['bootstrap/dist/fonts/*', 'font-awesome/fonts/*'],
                     dest: 'build/generated/fonts/',
                     flatten: true
                 }, {
                     expand: true,
                     cwd: 'libs/',
-                    src: ['bootstrap/dist/css/*.css', '!bootstrap/dist/css/*.min.css', 'ng-grid/ng-grid.css'],
+                    src: ['bootstrap/dist/css/*.css', '!bootstrap/dist/css/*.min.css', 'ng-grid/ng-grid.css', 'font-awesome/css/font-awesome.css'],
                     dest: 'build/generated/css/',
                     flatten: true
                 }, {
@@ -110,13 +110,14 @@ module.exports = function(grunt) {
                     flatten: true
                 }, {
                     expand: true,
-                    cwd: 'libs/bootstrap/dist/',
-                    src: ['fonts/*'],
-                    dest: 'build/generated/'
+                    cwd: 'libs/',
+                    src: ['bootstrap/dist/fonts/*', 'font-awesome/fonts/*'],
+                    dest: 'build/generated/fonts/',
+                    flatten: true
                 }, {
                     expand: true,
                     cwd: 'libs/',
-                    src: ['bootstrap/dist/css/*.min.css', 'ng-grid/ng-grid.min.css'],
+                    src: ['bootstrap/dist/css/*.min.css', 'ng-grid/ng-grid.min.css', 'font-awesome/css/font-awesome.min.css'],
                     dest: 'build/generated/css/',
                     flatten: true
                 }, {
@@ -136,7 +137,7 @@ module.exports = function(grunt) {
                 options: {
                     data: {
                         scripts: ['libs/jquery.js', 'libs/bootstrap.js', 'libs/angular.js', 'libs/angular-route.js', 'libs/ng-grid-2.0.7.debug.js', 'libs/allInOneJS.js'],
-                        csss: ['css/bootstrap.css', 'css/bootstrap-theme.css', 'css/ng-grid.css', 'css/allInOneCss.css']
+                        csss: ['css/bootstrap.css', 'css/bootstrap-theme.css', 'css/ng-grid.css', 'css/font-awesome.css', 'css/allInOneCss.css']
                     }
                 },
                 files: [{
@@ -157,7 +158,7 @@ module.exports = function(grunt) {
                 options: {
                     data: {
                         scripts: ['libs/jquery.min.js', 'libs/bootstrap.min.js', 'libs/angular.min.js', 'libs/angular-route.min.js', 'libs/ng-grid-2.0.7.min.js', "libs/allInOneJS.min.js"],
-                        csss: ['css/bootstrap.min.css', 'css/bootstrap-theme.min.css', 'css/ng-grid.min.css', 'css/allInOneCss.min.css']
+                        csss: ['css/bootstrap.min.css', 'css/bootstrap-theme.min.css', 'css/ng-grid.min.css', 'css/font-awesome.min.css', 'css/allInOneCss.min.css']
                     }
                 },
                 files: [{
@@ -197,7 +198,7 @@ module.exports = function(grunt) {
         },
         watch: {
             dev: {
-                files: ['src/index.html.tpl', 'src/apps/**/*', 'src/css/**/*', 'src/images/**/*', 'src/core/**/*'],
+                files: ['src/index.html.tpl', 'src/apps/**/*', 'src/apps/**/css/**/*', 'src/apps/**/images/**/*', 'src/core/**/*'],
                 tasks: ['clean:generated', 'sass:dev', 'concat:dev', 'copy:dev', 'template:dev'],
                 options: {
                     livereload: true

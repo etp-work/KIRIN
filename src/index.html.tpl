@@ -24,10 +24,10 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav" nav-activator>
-                        <li><a href="#/compile">Compile</a></li>
-                        <li><a href="#/test">Test</a></li>
-                        <li><a href="#/clean">Clean</a></li>
-                        <li><a href="#/setting">Setting</a></li>
+                        <li><a href="#/compile"><span class="fa fa-building-o">Compile</span></a></li>
+                        <li><a href="#/test"><span class="fa fa-check-square-o">Test</span></a></li>
+                        <li><a href="#/clean"><span class="fa fa-trash-o">Clean</span></a></li>
+                        <li><a href="#/setting"><span class="fa fa-cogs">Setting</span></a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container -->
