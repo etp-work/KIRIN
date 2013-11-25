@@ -35,6 +35,8 @@ Install [AdvancedNewFile](https://github.com/skuroda/Sublime-AdvancedNewFile), r
 
 Install [jsFormat](https://github.com/jdc0589/JsFormat), refer to [Installation Guide](https://github.com/jdc0589/JsFormat#install).
 
+Install [Sass](https://github.com/nathos/sass-textmate-bundle), refer to [Installation Guide](https://github.com/nathos/sass-textmate-bundle#sublime-text-2-installation).
+
 1. Open sublime text2.
 2. Click `Preferences` -> `Settings - User` to open the setting file.
 3. Copy following configuration to the opened setting file:
