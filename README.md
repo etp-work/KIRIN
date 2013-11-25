@@ -137,86 +137,12 @@ If you are working on some features which has nothing to do with `nodejs`, it's 
 
 To debug with browser, it requires you to install [livereload](http://livereload.com/) addon for the browsers.
 
-#### Debug KIRIN in browser without minify source code
+#### Debug
 
-Run following command in Git Bash and the root folder of KIRIN project:
+* `grunt`, execute `default` task. Compile source code to `%root_folder%/build/generated/` folder, and start up a local server on `127.0.0.1:9898`. Open a browser which you have `livereload` addon installed, visite the url `http://127.0.0.1:9898/`, and enable the `livereload` addon. Once you change the source code, the browser will be refreshed automatically.
+* `grunt exei` execute `exei` task. Exe file created in `%root_folder%/build/releases/KIRIN/win/KIRIN/` folder.
+* `grunt exee` execute `exee` task. The same as above, but different `node-webkit` server.
+* `grunt dist` execute `dist` task. The same as `default` task. But minified source code.
+* `grunt disti` execute `disti` task. The same as `exei` task. But minified source code.
+* `grunt diste` execute `diste` task. The same as above, but different `node-webkit` server.
 
-```shell
-grunt
-```
-
-Note: this will execute the `default` task defined in `Gruntfile.js`.
-
-The `default` task compile the source code to `%root_folder%/build/generated/` folder, and start up a local static file server on `127.0.0.1:9898`. Open a browser which you have `livereload` addon installed, visite the url `http://127.0.0.1:9898/`, and enable the `livereload` addon.
-
-Now, you can debug the app within browser. And once you make change to the source code, grunt will re-compile the them to `%root_folder%/build/generated/` folder, and the browser will be refreshed automatically because of the `livereload` feature.
-
-#### Debug KIRIN in node-webkit without minify source code(internal network)
-
-Run following command in Git Bash and the root folder of KIRIN project:
-
-```shell
-grunt exei
-```
-
-Note: this will execute the `exei` task defined in `Gruntfile.js`.
-
-The `exei` task compile the source code to `%root_folder%/build/generated/` folder, and create an exe file in `%root_folder%/build/releases/KIRIN/win/KIRIN/` folder.
-
-Now, you can debug the app.
-
-#### Debug KIRIN in node-webkit without minify source code(external network)
-
-Run following command in Git Bash and the root folder of KIRIN project:
-
-```shell
-grunt exee
-```
-
-Note: this will execute the `exee` task defined in `Gruntfile.js`.
-
-The `exee` task compile the source code to `%root_folder%/build/generated/` folder, and create an exe file in `%root_folder%/build/releases/KIRIN/win/KIRIN/` folder.
-
-Now, you can debug the app.
-
-#### Debug KIRIN in browser with minified source code
-
-Run following command in Git Bash and the root folder of KIRIN project:
-
-```shell
-grunt dist
-```
-
-Note: this will execute the `dist` task defined in `Gruntfile.js`.
-
-The `dist` task compile the source code to `%root_folder%/build/generated/` folder, and start up a local static file server on `127.0.0.1:9898`. Open a browser which you have `livereload` addon installed, visite the url `http://127.0.0.1:9898/`, and enable the `livereload` addon.
-
-Now, you can debug the app within browser. And once you make change to the source code, grunt will re-compile the them to `%root_folder%/build/generated/` folder, and the browser will be refreshed automatically because of the `livereload` feature.
-
-#### Debug KIRIN in node-webkit with minified source code(internal network)
-
-Run following command in Git Bash and the root folder of KIRIN project:
-
-```shell
-grunt disti
-```
-
-Note: this will execute the `disti` task defined in `Gruntfile.js`.
-
-The `disti` task compile the source code to `%root_folder%/build/generated/` folder, and create an exe file in `%root_folder%/build/releases/KIRIN/win/KIRIN/` folder.
-
-Now, you can debug the app.
-
-#### Debug KIRIN in node-webkit with minified source code(external network)
-
-Run following command in Git Bash and the root folder of KIRIN project:
-
-```shell
-grunt diste
-```
-
-Note: this will execute the `diste` task defined in `Gruntfile.js`.
-
-The `diste` task compile the source code to `%root_folder%/build/generated/` folder, and create an exe file in `%root_folder%/build/releases/KIRIN/win/KIRIN/` folder.
-
-Now, you can debug the app.
