@@ -40,15 +40,29 @@ mainApp.controller("TestController", ['$scope', '$http', function($scope, $http)
         }
     };
 
-    $scope.getPagedDataAsync = function (pageSize, page, searchText) {
+    $scope.getPagedDataAsync = function (pageSize, page) {
         setTimeout(function () {
             var data;
-            if (searchText) {
-                var ft = searchText.toLowerCase();
+            var testSuite = $scope.filterTestSuite || null;
+            var testCase = $scope.filterTestCase || null;
+            var needFilter = testSuite || testCase;
+
+            if (needFilter) {
                 $http.get($scope.dataUrl).success(function (largeLoad) {        
                     data = largeLoad.filter(function(item) {
-                        return JSON.stringify(item).toLowerCase().indexOf(ft) != -1;
+                        var filterMatched = false;
+                        
+                        if (testSuite) {
+                            filterMatched = item.TestSuite.indexOf(testSuite) != -1;
+                        }
+
+                        if (testCase) {
+                            filterMatched = item.TestCase.indexOf(testCase) != -1;
+                        }
+
+                        return filterMatched;
                     });
+
                     $scope.setPagingData(data,page,pageSize);
                 });            
             } else {
@@ -63,14 +77,13 @@ mainApp.controller("TestController", ['$scope', '$http', function($scope, $http)
     
     $scope.$watch('pagingOptions', function (newVal, oldVal) {
         if (newVal !== oldVal && newVal.currentPage !== oldVal.currentPage) {
-          $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
+          $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage);
         }
     }, true);
 
     $scope.$watch('filterOptions', function (newVal, oldVal) {
-        console.log($scope.filterOptions.filterText);
         if (newVal !== oldVal) {
-          $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
+          $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage);
         }
     }, true);
     
