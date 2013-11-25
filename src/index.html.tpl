@@ -32,7 +32,7 @@
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container -->
         </nav>
-		<div id="content" ng-view>&nbsp;</div>
+		<div id="content" ng-view class="slide">&nbsp;</div>
 		<div id="footer">&nbsp;</div>
 	</div>
 </body>

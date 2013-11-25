@@ -2,7 +2,7 @@
  * Bootloader
  */
 
-var mainApp = angular.module('mainApp', ['ngRoute', 'ngGrid']);
+var mainApp = angular.module('mainApp', ['ngRoute', 'ngGrid', 'ngAnimate']);
 
 mainApp.config(['$routeProvider',
     function($routeProvider) {
