@@ -5,11 +5,13 @@ This is a desktop application for MCS(or applications based on MCS) development.
 
 ## Getting Started(development)
 
-This project requires stable [Node.js](http://nodejs.org/) versions `>= 0.8.0` and the [Node.js](http://nodejs.org/) package manager as development environment. Please be aware of that.
+This project requires stable [Node.js](http://nodejs.org/) versions `>= 0.8.0`, the [Node.js](http://nodejs.org/) package manager as development environment, and [Ruby](http://www.ruby-lang.org/). Please be aware of that.
 
 And all the guide described below are based on windows 7 OS.
 
 <b>[Git](http://git-scm.com/downloads)</b> v1.8.0(or above) as  version control system.
+
+<b>[Ruby](http://www.ruby-lang.org/)</b> v1.9.3(or above) as sass runtime environment.
 
 <b>[Grunt](http://gruntjs.com/)</b> v0.4.1(or above) as development lifecycle controller and its corresponding plugins should be installed and managed via [npm](https://npmjs.org/).
 
