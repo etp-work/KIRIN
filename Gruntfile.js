@@ -15,7 +15,7 @@ module.exports = function(grunt) {
                 files: [{
                     expand: true,
                     cwd: 'src/core/',
-                    src: ['*.js'],
+                    src: ['BootLoader.js', '**/*.js'],
                     dest: 'build/generated/tmp/js/',
                     ext: '.min.js'
                 }, {
@@ -60,7 +60,7 @@ module.exports = function(grunt) {
         concat: {
             dev: {
                 files: {
-                    'build/generated/libs/allInOneJS.js': ['src/core/BootLoader.js', 'src/apps/**/js/**/*.js'],
+                    'build/generated/libs/allInOneJS.js': ['src/core/BootLoader.js', 'src/core/**/*.js', 'src/apps/**/js/**/*.js'],
                     'build/generated/css/allInOneCss.css': ['build/generated/tmp/css/*.css']
                 }
             },
@@ -197,7 +197,7 @@ module.exports = function(grunt) {
         },
         watch: {
             dev: {
-                files: ['src/html/**/*', 'src/js/**/*', 'src/css/**/*', 'src/images/**/*'],
+                files: ['src/index.html.tpl', 'src/apps/**/*', 'src/css/**/*', 'src/images/**/*', 'src/core/**/*'],
                 tasks: ['clean:generated', 'sass:dev', 'concat:dev', 'copy:dev', 'template:dev'],
                 options: {
                     livereload: true
