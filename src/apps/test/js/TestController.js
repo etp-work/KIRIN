@@ -1,7 +1,7 @@
 /*
  * The controller for test application
  */
-mainApp.controller("TestController", function($scope) {
+mainApp.controller("TestController", ['$scope', function($scope) {
 	
 	$scope.gridOptions = {
         data: 'testCases',
@@ -21,4 +21,4 @@ mainApp.controller("TestController", function($scope) {
     $scope.testCases = [{ ID: "1", TestCase: "testGetAllChannels", TestSuite: "Channel_US3_Tests", TestArea: "Channels", TestResult: "OK", Time: 0.5, Message: "OK" },
     				{ ID: "2", TestCase: "testGetAllChannelsForSpecificDevice", TestSuite: "Channel_US3_Tests", TestArea: "Channels", TestResult: "OK", Time: 0.2, Message: "OK" },
                     { ID: "3", TestCase: "testGetPlayableChannels", TestSuite: "Channel_US4_Tests", TestArea: "Channels", TestResult: "OK", Time: 0.4, Message: "OK" }];
-});
+}]);
