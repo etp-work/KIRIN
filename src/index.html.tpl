@@ -18,7 +18,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <span class="navbar-brand"><img src="images/kirin_logo.png" width="30">KIRIN</img></span>
+                    <span class="navbar-brand"><img src="images/kirin_logo.png" width="30"></img>Kirin</span>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
