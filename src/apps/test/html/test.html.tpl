@@ -1,9 +1,9 @@
 <form class="navbar-form" role="search">
-    <div class="form-group">
-        <input type="text" class="form-control" placeholder="TestSuite Filter" ng-model="filterTestSuite">
+    <div class="form-group col-sm-3">
+        <input type="text" class="form-control" placeholder="Test Suite Filter" ng-model="filterTestSuite">
     </div>
-    <div class="form-group">
-        <input type="text" class="form-control" placeholder="TestCase Filter" ng-model="filterTestCase">
+    <div class="form-group col-sm-3">
+        <input type="text" class="form-control" placeholder="Test Case Filter" ng-model="filterTestCase">
     </div>
     <button class="btn btn-default" ng-click="activateFilter()"><span class="glyphicon glyphicon-search"></span></button>
 </form>

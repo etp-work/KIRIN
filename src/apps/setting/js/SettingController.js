@@ -5,6 +5,7 @@ mainApp.controller("SettingController", ['$scope', 'preMgr', 'notificationMgr', 
     var settings = preMgr.getPreferences();
 	$scope.mcsPath = settings.mcsPath;
     $scope.tomcatPath = settings.tomcatPath;
+    $scope.testServer = settings.testServer;
     $scope.reset = true;
     $scope.save = function(){
         var newSetting = {};
@@ -13,6 +14,9 @@ mainApp.controller("SettingController", ['$scope', 'preMgr', 'notificationMgr', 
         }
         if($scope.tomcatPath !== settings.tomcatPath){
             newSetting.tomcatPath = $scope.tomcatPath;
+        }
+        if($scope.testServer !== settings.testServer){
+            newSetting.testServer = $scope.testServer;
         }
         preMgr.save(newSetting);
         $scope.reset = true;

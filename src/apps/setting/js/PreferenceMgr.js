@@ -10,9 +10,13 @@ mainApp.factory('preMgr', ['localStorageService', function(localStorageService){
     factory.init = function(){
         settings['mcsPath'] = localStorageService.get('mcsPath');
         settings['tomcatPath'] = localStorageService.get('tomcatPath');
+        settings['testServer'] = localStorageService.get('testServer');
     };
     factory.getPreferences = function(){
         return settings;
+    };
+    factory.get = function(name){
+        return settings[name];
     };
     factory.save = function(newSetting){
         for(var i in newSetting){
