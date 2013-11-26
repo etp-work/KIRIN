@@ -1,8 +1,8 @@
 /*
  * Bootloader
  */
-
-var mainApp = angular.module('mainApp', ['ngRoute', 'ngResource', 'ngGrid', 'ngAnimate']);
+angular.module('LocalStorageModule').value('prefix', 'kirin');
+var mainApp = angular.module('mainApp', ['ngRoute', 'ngResource', 'ngGrid', 'ngAnimate', 'LocalStorageModule']);
 
 mainApp.config(['$routeProvider',
     function($routeProvider) {
