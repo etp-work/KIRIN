@@ -21,7 +21,6 @@ mainApp.directive('enDirty', [
                 
                 scope.$watch('reset', function(newValue, oldValue){
                     if(newValue){
-                        console.log("runs here");
                         scope.reset = false;
                         angular.forEach(nkeys, function(key){
                             nprops[key] = scope[key];
