@@ -135,7 +135,9 @@ Run following command in Git Bash and the root folder of KIRIN project:
 bower install
 ```
 
-Note: above command will only install the dependencies defined with `dependencies` attribute in `bower.json`.
+Above command will only install the dependencies defined with `dependencies` attribute in `bower.json`.
+
+Note: Once you meet error `ENORESTARGET No tag found that was able to satisfy` with above command, it might be caused by chinese network. Type `git config --global url."https://".insteadOf git://` in git bash.
 
 #### Development without `nodejs` features
 
