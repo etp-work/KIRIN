@@ -35,6 +35,8 @@ Install [AdvancedNewFile](https://github.com/skuroda/Sublime-AdvancedNewFile), r
 
 Install [jsFormat](https://github.com/jdc0589/JsFormat), refer to [Installation Guide](https://github.com/jdc0589/JsFormat#install).
 
+Install [AngularJS](https://github.com/angular-ui/AngularJS-sublime-package), refer to [Installation Guide](https://github.com/angular-ui/AngularJS-sublime-package#installation-options).
+
 Install [Sass](https://github.com/nathos/sass-textmate-bundle), refer to [Installation Guide](https://github.com/nathos/sass-textmate-bundle#sublime-text-2-installation).
 
 1. Open sublime text2.
