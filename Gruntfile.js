@@ -53,7 +53,7 @@ module.exports = function(grunt) {
         cssmin: {
             dist: {
                 files: {
-                    'build/generated/css/allInOneCss.min.css': ['build/generated/tmp/css/*.css']
+                    'build/generated/css/allInOneCss.min.css': ['build/generated/tmp/css/style.min.css', 'build/generated/tmp/css/*.min.css']
                 }
             }
         },
@@ -61,7 +61,7 @@ module.exports = function(grunt) {
             dev: {
                 files: {
                     'build/generated/libs/allInOneJS.js': ['src/core/BootLoader.js', 'src/core/**/*.js', 'src/apps/**/js/**/*.js'],
-                    'build/generated/css/allInOneCss.css': ['build/generated/tmp/css/*.css']
+                    'build/generated/css/allInOneCss.css': ['build/generated/tmp/css/style.css', 'build/generated/tmp/css/*.css']
                 }
             },
             dist: {
