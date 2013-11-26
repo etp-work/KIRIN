@@ -84,12 +84,10 @@ mainApp.controller("TestController", ['$scope', '$resource', function($scope, $r
     
     $scope.gridOptions = {
         data: 'testCases',
-        showGroupPanel: true,
         enablePaging: true,
         showFooter: true,
-        enablePinning: true,
         showSelectionCheckbox: true,
-        pinSelectionCheckbox: true,
+        enableColumnResize: true,
         enableCellEdit: true,
         showColumnMenu: true,
         showFilter: true,
