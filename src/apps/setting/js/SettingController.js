@@ -5,6 +5,7 @@ mainApp.controller("SettingController", ['$scope', 'preMgr', function($scope, pr
     var settings = preMgr.getPreferences();
 	$scope.mcsPath = settings.mcsPath;
     $scope.tomcatPath = settings.tomcatPath;
+    $scope.reset = true;
     $scope.save = function(){
         var newSetting = {};
         if($scope.mcsPath !== settings.mcsPath){
@@ -14,5 +15,6 @@ mainApp.controller("SettingController", ['$scope', 'preMgr', function($scope, pr
             newSetting.tomcatPath = $scope.tomcatPath;
         }
         preMgr.save(newSetting);
+        $scope.reset = true;
     };
 }]);

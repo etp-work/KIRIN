@@ -16,7 +16,7 @@
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-              <button type="submit" class="btn btn-default" ng-click="save()">Save</button>
+              <button type="submit" class="btn btn-default" ng-click="save()" en-dirty='mcsPath , tomcatPath'>Save</button>
             </div>
         </div>
     </form>

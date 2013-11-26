@@ -17,6 +17,7 @@ mainApp.factory('preMgr', ['localStorageService', function(localStorageService){
     factory.save = function(newSetting){
         for(var i in newSetting){
             localStorageService.add(i, newSetting[i]);
+            settings[i] = newSetting[i];
         }
     };
     return factory;
