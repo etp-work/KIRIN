@@ -75,7 +75,7 @@ module.exports = function(grunt) {
                 files: [{
                     expand: true,
                     cwd: 'libs/',
-                    src: ['jquery/jquery.js', 'bootstrap/dist/js/bootstrap.js', 'angular/angular.js', 'angular-route/angular-route.js', 'angular-animate/angular-animate.js', 'ng-grid/ng-grid-2.0.7.debug.js'],
+                    src: ['jquery/jquery.js', 'bootstrap/dist/js/bootstrap.js', 'angular/angular.js', 'angular-route/angular-route.js', 'angular-resource/angular-resource.js', 'angular-animate/angular-animate.js', 'ng-grid/ng-grid-2.0.7.debug.js'],
                     dest: 'build/generated/libs/',
                     flatten: true
                 }, {
@@ -111,7 +111,7 @@ module.exports = function(grunt) {
                 files: [{
                     expand: true,
                     cwd: 'libs/',
-                    src: ['jquery/jquery.min.js', 'bootstrap/dist/js/bootstrap.min.js', 'angular/angular.min.js', 'angular-route/angular-route.min.js', 'angular-animate/angular-animate.min.js', 'ng-grid/ng-grid-2.0.7.min.js'],
+                    src: ['jquery/jquery.min.js', 'bootstrap/dist/js/bootstrap.min.js', 'angular/angular.min.js', 'angular-route/angular-route.min.js', 'angular-resource/angular-resource.min.js', 'angular-animate/angular-animate.min.js', 'ng-grid/ng-grid-2.0.7.min.js'],
                     dest: 'build/generated/libs/',
                     flatten: true
                 }, {
@@ -148,7 +148,7 @@ module.exports = function(grunt) {
             dev: {
                 options: {
                     data: {
-                        scripts: ['libs/jquery.js', 'libs/bootstrap.js', 'libs/angular.js', 'libs/angular-route.js', 'libs/angular-animate.js', 'libs/ng-grid-2.0.7.debug.js', 'libs/allInOneJS.js'],
+                        scripts: ['libs/jquery.js', 'libs/bootstrap.js', 'libs/angular.js', 'libs/angular-route.js', 'libs/angular-resource.js', 'libs/angular-animate.js', 'libs/ng-grid-2.0.7.debug.js', 'libs/allInOneJS.js'],
                         csss: ['css/bootstrap.css', 'css/bootstrap-theme.css', 'css/ng-grid.css', 'css/font-awesome.css', 'css/allInOneCss.css']
                     }
                 },
@@ -169,7 +169,7 @@ module.exports = function(grunt) {
             dist: {
                 options: {
                     data: {
-                        scripts: ['libs/jquery.min.js', 'libs/bootstrap.min.js', 'libs/angular.min.js', 'libs/angular-route.min.js', 'libs/angular-animate.min.js', 'libs/ng-grid-2.0.7.min.js', "libs/allInOneJS.min.js"],
+                        scripts: ['libs/jquery.min.js', 'libs/bootstrap.min.js', 'libs/angular.min.js', 'libs/angular-route.min.js', 'libs/angular-resource.min.js', 'libs/angular-animate.min.js', 'libs/ng-grid-2.0.7.min.js', "libs/allInOneJS.min.js"],
                         csss: ['css/bootstrap.min.css', 'css/bootstrap-theme.min.css', 'css/ng-grid.min.css', 'css/font-awesome.min.css', 'css/allInOneCss.min.css']
                     }
                 },

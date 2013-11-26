@@ -1,10 +1,11 @@
 /*
  * The controller for test application
  */
-mainApp.controller("TestController", ['$scope', '$http', function($scope, $http) {
+mainApp.controller("TestController", ['$scope', '$resource', function($scope, $resource) {
 
 	$scope.dataUrl = 'data/testCases.json';
-    
+    var testCaseResource = $resource($scope.dataUrl);
+
     $scope.filterOptions = {
         filterText: '',
         useExternalFilter: false
@@ -41,36 +42,30 @@ mainApp.controller("TestController", ['$scope', '$http', function($scope, $http)
     };
 
     $scope.getPagedDataAsync = function (pageSize, page) {
-        setTimeout(function () {
-            var data;
-            var testSuite = $scope.filterTestSuite || null;
-            var testCase = $scope.filterTestCase || null;
-            var needFilter = testSuite || testCase;
-
+        var testSuite = $scope.filterTestSuite || null;
+        var testCase = $scope.filterTestCase || null;
+        var needFilter = testSuite || testCase;
+        var data = testCaseResource.query(function() {
+        
             if (needFilter) {
-                $http.get($scope.dataUrl).success(function (largeLoad) {        
-                    data = largeLoad.filter(function(item) {
-                        var filterMatched = false;
-                        
-                        if (testSuite) {
-                            filterMatched = item.TestSuite.indexOf(testSuite) != -1;
-                        }
+                data = data.filter(function(item) {
+                    var filterMatched = false;
+                    
+                    if (testSuite) {
+                        filterMatched = item.TestSuite.indexOf(testSuite) != -1;
+                    }
 
-                        if (testCase) {
-                            filterMatched = item.TestCase.indexOf(testCase) != -1;
-                        }
+                    if (testCase) {
+                        filterMatched = item.TestCase.indexOf(testCase) != -1;
+                    }
 
-                        return filterMatched;
-                    });
-
-                    $scope.setPagingData(data,page,pageSize);
-                });            
-            } else {
-                $http.get($scope.dataUrl).success(function (largeLoad) {
-                    $scope.setPagingData(largeLoad,page,pageSize);
+                    return filterMatched;
                 });
             }
-        }, 100);
+
+            $scope.setPagingData(data,page,pageSize);
+            
+        });
     };
     
     $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage);
@@ -89,9 +84,15 @@ mainApp.controller("TestController", ['$scope', '$http', function($scope, $http)
     
     $scope.gridOptions = {
         data: 'testCases',
+        showGroupPanel: true,
         enablePaging: true,
-        enableCellSelection: false,
         showFooter: true,
+        enablePinning: true,
+        showSelectionCheckbox: true,
+        pinSelectionCheckbox: true,
+        enableCellEdit: true,
+        showColumnMenu: true,
+        showFilter: true,
         totalServerItems: 'totalServerItems',
         pagingOptions: $scope.pagingOptions,
         filterOptions: $scope.filterOptions,        
