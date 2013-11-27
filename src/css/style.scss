@@ -21,11 +21,23 @@ $contentMarginTop: 52px;
 };
 @mixin cusTransformX($range){
     -webkit-transform: translateX($range);
+    -moz-transform: translateX($range);
     -ms-transform: translateX($range);
+    -o-transform: translateX($range);
     transform: translateX($range);
+};
+@mixin cusTransformY($range){
+    -webkit-transform: translateY($range);
+    -moz-transform: translateY($range);
+    -ms-transform: translateY($range);
+    -o-transform: translateY($range);
+    transform: translateY($range);
 };
 @mixin cusTransformDuration($dur){
     -webkit-transition-duration: $dur;
+    -moz-transition-duration: $dur;
+    -ms-transition-duration: $dur;
+    -o-transition-duration: $dur;
     transition-duration: $dur;
 };
 @mixin cusAnimationPosition(){
@@ -59,10 +71,6 @@ a:focus{
 	    }
 }
 
-.slide {
-    @include cusTransition(all, 0.5s, linear);
-}
-
 .slide.ng-enter {
     @include cusTransformX(240px);
     @include cusTransformDuration(300ms);
@@ -85,4 +93,27 @@ a:focus{
 .slide.ng-leave-active {
     @include cusTransformX(-240px);
     left:-100%;
+}
+
+
+.notify.ng-enter {
+    @include cusTransformY(-51px);
+    @include cusTransformDuration(370ms);
+    opacity: 0;
+}
+
+.notify.ng-enter-active {
+    @include cusTransformY(0);
+    opacity: 1;
+}
+
+.notify.ng-leave{
+    @include cusTransformY(0);
+    @include cusTransformDuration(370ms);
+    opacity: 1;
+}
+
+.notify.ng-leave-active{
+    @include cusTransformY(51px);
+    opacity: 0;
 }
