@@ -42,7 +42,7 @@ mainApp.factory('notificationMgr', ['$timeout',
                 msg = options;
             }else{
                 type = options['type'] ? options['type'] : 'danger';
-                title = options['title'] ? options['title'] : 'glyphicon-remove-sign';
+                title = options['title'] ? options['title'] : 'glyphicon-flash';
                 msg = options['msg'] ? options['msg'] : 'Something wrong, man!';
             }
 
@@ -67,6 +67,30 @@ mainApp.factory('notificationMgr', ['$timeout',
             factory.addNotification({
                 type: 'success',
                 title: 'glyphicon-ok',
+                msg: msg
+            });
+        };
+
+        factory.addWarning = function(msg){
+            factory.addNotification({
+                type: 'warning',
+                title: 'glyphicon-warning-sign',
+                msg: msg
+            });
+        };
+
+        factory.addInfo = function(msg){
+            factory.addNotification({
+                type: 'info',
+                title: 'glyphicon-globe',
+                msg: msg
+            });
+        };
+
+        factory.addDanger = function(msg){
+            factory.addNotification({
+                type: 'danger',
+                title: 'glyphicon-flash',
                 msg: msg
             });
         };
