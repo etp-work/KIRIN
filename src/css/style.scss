@@ -42,6 +42,14 @@ $contentMarginTop: 52px;
 	  height: 100%;
 }
 
+a:focus{
+    outline: 0;
+}
+
+.btn:focus {
+    outline: none;
+}
+
 #content {
     margin-top:$contentMarginTop;
 	    .gridStyle {
