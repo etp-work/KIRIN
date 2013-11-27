@@ -23,7 +23,7 @@
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
-                    <ul class="nav navbar-nav" ki-navActivator>
+                    <ul class="nav navbar-nav" ki-navactivator>
                         <li><a href="#/compile"><i class="fa fa-building-o">Compile</i></a></li>
                         <li><a href="#/test"><i class="fa fa-check-square-o">Test</i></a></li>
                         <li><a href="#/clean"><i class="fa fa-trash-o">Clean</i></a></li>

@@ -1,7 +1,7 @@
 /**
  * Directive, kiNavActivator
  */
-mainApp.directive('kiNavActivator', ['$route', 
+mainApp.directive('kiNavactivator', ['$route', 
     function($route) {
         return {
             restrict: 'A',
