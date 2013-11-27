@@ -23,7 +23,7 @@
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
-                    <ul class="nav navbar-nav" nav-activator>
+                    <ul class="nav navbar-nav" ki-navActivator>
                         <li><a href="#/compile"><i class="fa fa-building-o">Compile</i></a></li>
                         <li><a href="#/test"><i class="fa fa-check-square-o">Test</i></a></li>
                         <li><a href="#/clean"><i class="fa fa-trash-o">Clean</i></a></li>
@@ -33,7 +33,9 @@
             </div><!-- /.container -->
         </nav>
 		<div id="content" ng-view class="slide"></div>
-		<div id="footer">&nbsp;</div>
+		<div id="footer">
+            <ki-notification/>
+        </div>
 	</div>
 </body>
 </html>

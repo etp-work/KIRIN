@@ -1,8 +1,8 @@
 /**
- * Directive, bts-tooltips.
+ * Directive, ki-tooltips.
  * This directive provide the capability to display tooltip which provided by bootstrap.js
  */
-mainApp.directive('btsTooltips', [ 
+mainApp.directive('kiTooltips', [ 
     function() {
         return {
             restrict: 'A',
