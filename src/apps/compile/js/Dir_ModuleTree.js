@@ -1,7 +1,7 @@
 mainApp.directive('kiModuleTree', function ($timeout) {
   return {
     restrict: 'E',
-    templateUrl: '../html/module_tree_template.html',
+    templateUrl: 'partials/compile/html/module_tree_template.html',
     scope: {
       treeData: '=',
       onSelect: '&',
