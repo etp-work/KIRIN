@@ -1,7 +1,7 @@
 /*
  * The controller for setting application
  */
-mainApp.controller("SettingController", ['$scope', 'preMgr', function($scope, preMgr) {
+mainApp.controller("SettingController", ['$scope', 'preMgr', 'notificationMgr', function($scope, preMgr, notificationMgr) {
     var settings = preMgr.getPreferences();
 	$scope.mcsPath = settings.mcsPath;
     $scope.tomcatPath = settings.tomcatPath;
@@ -16,5 +16,6 @@ mainApp.controller("SettingController", ['$scope', 'preMgr', function($scope, pr
         }
         preMgr.save(newSetting);
         $scope.reset = true;
+        notificationMgr.addSuccess('Changes saved.');
     };
 }]);
