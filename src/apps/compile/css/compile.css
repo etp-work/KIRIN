@@ -1,0 +1,121 @@
+/* 
+   module-tree.css
+
+   style for the angular-bootstrap-nav-tree
+   for both Bootstrap 2 and Bootstrap 3
+
+*/
+
+
+
+/* ------------------------------------------
+AngularJS Animations...
+
+The first selector is for Angular 1.1.5
+The second selector is for Angular 1.2.0
+
+*/
+.module-tree-animate-enter,
+li.module-tree-row.ng-enter {
+  transition: 200ms linear all;
+  position: relative;
+  display: block;
+  opacity: 0;
+  max-height:0px;
+}
+.module-tree-animate-enter.module-tree-animate-enter-active,
+li.module-tree-row.ng-enter-active{
+  opacity: 1;
+  max-height:30px;
+}
+
+.module-tree-animate-leave,
+li.module-tree-row.ng-leave {
+  transition: 200ms linear all;
+  position: relative;
+  display: block;
+  height:30px;
+  max-height: 30px;
+  opacity: 1;
+}
+.module-tree-animate-leave.module-tree-animate-leave-active,
+li.module-tree-row.ng-leave-active {  
+  height: 0px;
+  max-height:0px;
+  opacity: 0;
+}
+
+
+/* 
+------------------------------------------
+Angular 1.2.0 Animation 
+*/
+
+
+.module-tree-animate.ng-enter{
+
+}
+.module-tree-animate.ng-enter{
+
+}
+
+
+
+
+/*
+   end animation stuff
+-----------------------------------------
+   begin normal css stuff
+*/
+ul.module-tree li.module-tree-row {  
+  padding: 0px;
+  margin:0px;
+}
+
+ul.module-tree li.module-tree-row a {
+  padding: 3px 10px;
+}
+
+ul.module-tree i.indented {
+  padding: 2px;
+}
+
+.module-tree {
+  cursor: pointer;
+}
+ul.nav.module-tree .level-1 .indented {
+  position: relative;
+  left: 0px;
+}
+ul.nav.module-tree .level-2 .indented {
+  position: relative;
+  left: 20px;
+}
+ul.nav.module-tree .level-3 .indented {
+  position: relative;
+  left: 40px;
+}
+ul.nav.module-tree .level-4 .indented {
+  position: relative;
+  left: 60px;
+}
+ul.nav.module-tree .level-5 .indented {
+  position: relative;
+  left: 80px;
+}
+ul.nav.module-tree .level-6 .indented {
+  position: relative;
+  left: 80px;
+}
+ul.nav.nav-list.module-tree .level-7 .indented {
+  position: relative;
+  left: 100px;
+}
+ul.nav.nav-list.module-tree .level-8 .indented {
+  position: relative;
+  left: 120px;
+}
+ul.nav.nav-list.module-tree .level-9 .indented {
+  position: relative;
+  left: 140px;
+}
