@@ -6,10 +6,10 @@ mainApp.factory('notificationMgr', ['$timeout',
     function($timeout){
         var factory = {};
         var delayMap = {
-            danger: 600000,
-            warning: 180000,
-            info: 30000,
-            success: 15000
+            danger: 60000,
+            warning: 30000,
+            info: 10000,
+            success: 5000
         };
         var notifications = [];
 
@@ -63,7 +63,7 @@ mainApp.factory('notificationMgr', ['$timeout',
             removeNotification(id);
         };
 
-        factory.addSuccess = function(msg){
+        factory.success = function(msg){
             factory.addNotification({
                 type: 'success',
                 title: 'glyphicon-ok',
@@ -71,7 +71,7 @@ mainApp.factory('notificationMgr', ['$timeout',
             });
         };
 
-        factory.addWarning = function(msg){
+        factory.warning = function(msg){
             factory.addNotification({
                 type: 'warning',
                 title: 'glyphicon-warning-sign',
@@ -79,7 +79,7 @@ mainApp.factory('notificationMgr', ['$timeout',
             });
         };
 
-        factory.addInfo = function(msg){
+        factory.info = function(msg){
             factory.addNotification({
                 type: 'info',
                 title: 'glyphicon-globe',
@@ -87,7 +87,7 @@ mainApp.factory('notificationMgr', ['$timeout',
             });
         };
 
-        factory.addDanger = function(msg){
+        factory.error = function(msg){
             factory.addNotification({
                 type: 'danger',
                 title: 'glyphicon-flash',

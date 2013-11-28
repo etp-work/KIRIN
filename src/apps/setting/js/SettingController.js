@@ -20,6 +20,6 @@ mainApp.controller("SettingController", ['$scope', 'preMgr', 'notificationMgr', 
         }
         preMgr.save(newSetting);
         $scope.reset = true;
-        notificationMgr.addSuccess('Changes saved.');
+        notificationMgr.success('Changes saved.');
     };
 }]);
