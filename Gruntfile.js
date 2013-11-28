@@ -31,8 +31,8 @@ module.exports = function(grunt) {
             dev: {
                 files: [{
                     expand: true,
-                    cwd: 'src/',
-                    src: ['css/style.scss'],
+                    cwd: 'src/css/',
+                    src: ['style.scss'],
                     dest: 'build/generated/tmp/css/',
                     ext: '.css'
                 }, {
@@ -46,8 +46,8 @@ module.exports = function(grunt) {
             dist: {
                 files: [{
                     expand: true,
-                    cwd: 'src/',
-                    src: ['css/style.scss'],
+                    cwd: 'src/css/',
+                    src: ['style.scss'],
                     dest: 'build/generated/tmp/css/',
                     ext: '.css'
                 }, {
