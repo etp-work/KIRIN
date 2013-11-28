@@ -1,52 +1,40 @@
 @charset "utf-8";
 $contentMarginTop: 52px;
-@mixin cusTransition($prop, $dur, $timing) {
-    -webkit-transition-property: $prop;
-    -moz-transition-property: $prop;
-    -ms-transition-property: $prop;
-    -o-transition-property: $prop;
-    transition-property: $prop;
-
-    -webkit-transition-duration: $dur;
-    -moz-transition-duration: $dur;
-    -ms-transition-duration: $dur;
-    -o-transition-duration: $dur;
-    transition-duration: $dur;
-
-    -webkit-transition-timing-function: $timing;
-    -moz-transition-timing-function: $timing;
-    -ms-transition-timing-function: $timing;
-    -o-transition-timing-function: $timing;
-    transition-timing-function: $timing;
-};
-@mixin cusTransformX($range){
-    -webkit-transform: translateX($range);
-    -moz-transform: translateX($range);
-    -ms-transform: translateX($range);
-    -o-transform: translateX($range);
-    transform: translateX($range);
-};
-@mixin cusTransformY($range){
+@mixin setTransformY($range){
     -webkit-transform: translateY($range);
     -moz-transform: translateY($range);
     -ms-transform: translateY($range);
     -o-transform: translateY($range);
     transform: translateY($range);
 };
-@mixin cusTransformDuration($dur){
+@mixin setTransitionProperty($prop){
+    -webkit-transition-property: $prop;
+    -moz-transition-property: $prop;
+    -ms-transition-property: $prop;
+    -o-transition-property: $prop;
+    transition-property: $prop;
+};
+@mixin setTransitionDuration($dur){
     -webkit-transition-duration: $dur;
     -moz-transition-duration: $dur;
     -ms-transition-duration: $dur;
     -o-transition-duration: $dur;
     transition-duration: $dur;
 };
-@mixin cusAnimationPosition(){
-    position:absolute;
-    top: 20px;
-    left:0;
-    right:0;
-    bottom:0;
-}
+@mixin setTransitionTimingFunction($timing){
+    -webkit-transition-timing-function: $timing;
+    -moz-transition-timing-function: $timing;
+    -ms-transition-timing-function: $timing;
+    -o-transition-timing-function: $timing;
+    transition-timing-function: $timing;
+};
+@mixin setTransitionDelay($de){
+  -webkit-transition-delay: $de;
+  -moz-transition-delay: $de;
+  -ms-transition-delay: $de;
+  -o-transition-delay: $de;
+  transition-delay: $de;
+};
 
 
 #main {
@@ -54,10 +42,10 @@ $contentMarginTop: 52px;
 	  height: 100%;
 }
 
+/* Remove outline from hyperlink and button, to make the element looks more native */
 a:focus{
     outline: 0;
 }
-
 .btn:focus {
     outline: none;
 }
@@ -72,48 +60,54 @@ a:focus{
 }
 
 .slide.ng-enter {
-    @include cusTransformX(240px);
-    @include cusTransformDuration(300ms);
-    @include cusAnimationPosition();
-    left:100%;
+    @include setTransitionProperty(all);
+    @include setTransitionDuration(1.5s);
+    @include setTransitionTimingFunction(ease);
+    opacity: 0;
 }
 
 .slide.ng-enter-active {
-    @include cusTransformX(0);
-    left:0;
+    opacity: 1;
 }
 
 .slide.ng-leave {
-    @include cusTransformX(0);
-    @include cusTransformDuration(300ms);
-    @include cusAnimationPosition();
-    left:0;
+    @include setTransitionProperty(all);
+    @include setTransitionDuration(0.2s);
+    @include setTransitionTimingFunction(ease);
+    opacity: 1;
 }
 
 .slide.ng-leave-active {
-    @include cusTransformX(-240px);
-    left:-100%;
+    opacity: 0;
 }
 
+.slide.ng-enter-stagger {
+    /* this will have a 500ms delay between each successive leave animation */
+    @include setTransitionDelay(0.5s);
+
+    /* in case the stagger doesn't work then these two values
+       must be set to 0 to avoid an accidental CSS inheritance */
+    @include setTransitionDuration(0s);
+}
 
 .notify.ng-enter {
-    @include cusTransformY(-51px);
-    @include cusTransformDuration(370ms);
+    @include setTransformY(-51px);
+    @include setTransitionDuration(370ms);
     opacity: 0;
 }
 
 .notify.ng-enter-active {
-    @include cusTransformY(0);
+    @include setTransformY(0);
     opacity: 1;
 }
 
 .notify.ng-leave{
-    @include cusTransformY(0);
-    @include cusTransformDuration(370ms);
+    @include setTransformY(0);
+    @include setTransitionDuration(370ms);
     opacity: 1;
 }
 
 .notify.ng-leave-active{
-    @include cusTransformY(51px);
+    @include setTransformY(51px);
     opacity: 0;
 }
