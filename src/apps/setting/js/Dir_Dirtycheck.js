@@ -1,18 +1,18 @@
 /**
- * Directive, en-dirty.
+ * Directive, ki-dirtycheck.
  * This directive watch the ng-models which you set as attribute with this directive, if any of the watched models become dirty, enable current element, otherwise, disable it.
  * For example:
  * <pre>
- *  <button type="submit" en-dirty='mcsPath, tomcatPath'>Save</button>
+ *  <button type="submit" ki-dirtycheck='mcsPath, tomcatPath'>Save</button>
  * </pre>
  * Above example will watch two models ['mcsPath', 'tomcatPath'] in the same scope with current element. If any one of those value changed, enable this button, otherwise, disable it.
  */
-mainApp.directive('enDirty', [
+mainApp.directive('kiDirtycheck', [
     function() {
         return {
             restrict: 'A',
             link: function (scope, element, attrs, controller) {
-                var oprops = attrs['enDirty'].split(',');
+                var oprops = attrs['kiDirtycheck'].split(',');
                 var nprops = {};
                 var nkeys = [];
                 angular.forEach(oprops, function(value){

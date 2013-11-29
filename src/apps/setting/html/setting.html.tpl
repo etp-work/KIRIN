@@ -23,7 +23,7 @@
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-              <input type="button" class="btn btn-default" ng-click="save()" en-dirty='mcsPath, tomcatPath, testServer' value="Save"/>
+              <input type="button" class="btn btn-default" ng-click="save()" ki-dirtycheck='mcsPath, tomcatPath, testServer' value="Save"/>
             </div>
         </div>
     </form>
