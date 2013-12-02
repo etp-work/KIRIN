@@ -11,3 +11,17 @@
 .checklist {
     display: inline-block;
 }
+
+#clean > div > div > .nav-pills > li > a:hover {
+    background-color: #7a7a7a;
+    color: #FFFFFF;
+}
+
+#clean > div > div > .nav-pills > li.active > a{
+    background-color: #333333;
+    color: #FFFFFF;
+}
+
+#clean > div > div > .nav-pills > li > a {
+    background-color: #eeeeee;
+}
