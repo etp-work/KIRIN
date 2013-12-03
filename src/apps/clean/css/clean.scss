@@ -1,17 +1,3 @@
-.clean {
-    margin-left: 15%;
-    margin-right: 30%;
-}
-
-.meanulist {
-    display: inline-block;
-    vertical-align: top;
-}
-
-.checklist {
-    display: inline-block;
-}
-
 #clean > div > div > .nav-pills > li > a:hover {
     background-color: #7a7a7a;
     color: #FFFFFF;
@@ -24,4 +10,9 @@
 
 #clean > div > div > .nav-pills > li > a {
     background-color: #eeeeee;
+}
+
+.listblock {
+    max-height: 450px;
+    overflow-y: auto;
 }

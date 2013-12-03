@@ -7,17 +7,13 @@
             </ul>
         </div>
         <div id="widget" class="col-lg-9 col-md-9 col-sm-9">
-            <div class="list-group">
-                <a href="#" class="list-group-item" ng-repeat="cache in caches"><span class="glyphicon" ki-itemchecker></span>&nbsp;&nbsp;<span ng-bind="cache.name"></span></a>
+            <div class="list-group listblock">
+                <a href="#" class="list-group-item" ng-repeat="cache in caches"><span class="glyphicon" ki-itemchecker="cache"></span>&nbsp;&nbsp;<span ng-bind="cache.name"></span></a>
             </div>
         </div>
         <div id="tomcat" class="col-lg-9 col-md-9 col-sm-9" style="display:none">
-            <div class="list-group">
-                <a href="#" class="list-group-item"><span class="glyphicon glyphicon-unchecked">&nbsp;tomcat</span></a>
-                <a href="#" class="list-group-item"><span class="glyphicon glyphicon-check">&nbsp;Morbi leo risus</span></a>
-                <a href="#" class="list-group-item">Morbi leo risus</a>
-                <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-                <a href="#" class="list-group-item">Vestibulum at eros</a>
+            <div class="list-group listblock">
+                <a href="#" class="list-group-item" ng-repeat="war in wars"><span class="glyphicon" ki-itemchecker="war"></span>&nbsp;&nbsp;<span ng-bind="war.name"></span></a>
             </div>
         </div>
     </div>

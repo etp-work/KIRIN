@@ -11,13 +11,14 @@ mainApp.directive('kiItemchecker', [
                     true: 'glyphicon-check',
                     false: 'glyphicon-unchecked'
                 };
-                scope.$watch('cache.selected', function(newValue, oldValue){
+                var watchObj = attrs['kiItemchecker'];
+                scope.$watch(watchObj + ".selected", function(newValue, oldValue){
                     element.removeClass(cssMap[oldValue]);
                     element.addClass(cssMap[newValue]);
                 });
 
                 element.parent().on('click', function(e){
-                    scope.cache.selected = !scope.cache.selected;
+                    scope[watchObj].selected = !scope[watchObj].selected;
                     scope.$apply();
                     e.preventDefault();
                 });

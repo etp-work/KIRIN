@@ -7,8 +7,12 @@ mainApp.directive('kiDivselector', [
         return {
             restrict: 'A',
             link: function (scope, element, attrs, controller) {
+                var activeDiv;
                 if(element.find('li.active').length === 0){
-                    element.find('li').first().addClass('active');
+                    var first = element.find('li').first();
+                    first.addClass('active');
+                    activeDiv =first.children().first().attr('href').substring(2);
+                    scope["active" + activeDiv.charAt(0).toUpperCase() + activeDiv.slice(1)]();
                 }
                 element.find('li a').on('click', function(e){
                     var li = $(this).parent();
@@ -19,7 +23,9 @@ mainApp.directive('kiDivselector', [
                     $("#" + li.siblings().first().children().first().attr('href').substring(2)).hide();
                     li.siblings().removeClass('active');
                     li.addClass('active');
-                    $("#" + $(this).attr('href').substring(2)).show();
+                    activeDiv = $(this).attr('href').substring(2);
+                    $("#" + activeDiv).show();
+                    scope["active" + activeDiv.charAt(0).toUpperCase() + activeDiv.slice(1)]();
                     e.preventDefault();
                 });
             }

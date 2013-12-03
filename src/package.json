@@ -2,6 +2,11 @@
 	"name": "KIRIN",
 	"main": "index.html",
 	"version": "1.0.0",
+	"description": "A powerful tool for MCS development.",
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/etp-work/KIRIN.git"
+	},
 	"window": {
 		"title": "KIRIN",
 		"icon": "images/kirin.png",
@@ -11,5 +16,8 @@
 		"height": 650,
 		"position": "center",
 		"resizable": true
+	},
+	"dependencies": {
+		"watch": "~0.8.0"
 	}
 }
