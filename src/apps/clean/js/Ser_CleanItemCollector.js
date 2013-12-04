@@ -52,7 +52,7 @@ mainApp.factory('cleanItemCollector', ['$q', 'notificationMgr', '$rootScope', 'p
         if(endPart === 'host-manager'){
             return false;
         }
-        if(endPart.indexOf('\\') >-1){
+        if(endPart.indexOf('\\') > -1){
             return false
         }
         return true;
@@ -131,13 +131,11 @@ mainApp.factory('cleanItemCollector', ['$q', 'notificationMgr', '$rootScope', 'p
                 if(!startswith(file, 'portal') && !startswith(file, 'public') && !startswith(file, 'private') && !startswith(file, 'static')){
                     return;
                 }
-
-                if(fs.statSync(tomcatHome + "\\" + file).isFile() && !endswith(file, '.war')){
+                var stat = fs.statSync(tomcatHome + "\\" + file);
+                if(!stat.isDirectory()){
                     return;
                 }
-
-                var tom = {name: file, selected: false};
-                items.tomcat.push(tom);
+                items.tomcat.push({name: file, selected: false});
             });
 
             deferred.resolve(items.tomcat);
