@@ -3,11 +3,12 @@
  */
 mainApp.service('testService', ['$resource', '$q', 'preMgr',
 	function($resource, $q, preMgr) {
-		var defaultTestServerAddress = 'http://127.0.0.1:8080/portal-testserver-war-15.2-SNAPSHOT';
-		var testServerAddress = defaultTestServerAddress;
 		var dataUrl = '/public/test/data.ajax';
-		//var testCaseResource = $resource(preMgr.get('testServer') + dataUrl);
-		var testCaseResource = $resource('data/testCases.json');
+		var runTestUrl = "/public/test/startTest.ajax?async=ture";
+
+		//var testCaseResource = $resource('data/testCases.json');
+		var testCaseResource = $resource(preMgr.get('testServer') + dataUrl);
+		var runTestResource = $resource(preMgr.get('testServer') + runTestUrl);
 
 		function getTestSuiteName(testSuiteId){
 			var ids = testSuiteId.split('.');
@@ -31,6 +32,19 @@ mainApp.service('testService', ['$resource', '$q', 'preMgr',
 			};
 			return testResults;
 		}
+
+		this.runTestCases = function (testCases){
+			var deferred = $q.defer();
+			var cases = '';
+			for (var i = 0; i < testCases.length; i++) {
+				cases += '|' + testCases[i].ID;
+			}
+			if(cases.length > 0){
+				cases = cases.substring(1);
+			}
+			runTestResource.query({cases: cases});
+			return deferred.promise;
+		};
 
 		this.queryTestCases = function (dataFilter) {
 			var deferred = $q.defer();

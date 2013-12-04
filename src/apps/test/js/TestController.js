@@ -1,8 +1,12 @@
 /*
  * The controller for test application
  */
-mainApp.controller("TestController", ['$scope', '$timeout', 'testService',
-    function($scope, $timeout, testService) {
+mainApp.controller("TestController", ['$scope', '$timeout', 'notificationMgr', 'preMgr', 'testService',
+    function($scope, $timeout, notificationMgr, preMgr, testService) {
+
+        if(!preMgr.get('testServer')){
+            notificationMgr.warning("You haven't set the test server URL yet, please set it first.");
+        }
 
         $scope.filterOptions = {
             filterText: '',
@@ -20,6 +24,10 @@ mainApp.controller("TestController", ['$scope', '$timeout', 'testService',
             if (testCase) {
                 $scope.filterOptions.filterText += 'TestCase:' + testCase + ';';
             }
+        };
+
+        $scope.runAutoTest = function(){
+            testService.runTestCases($scope.gridOptions.selectedItems);
         };
 
         $scope.totalServerItems = 0;
@@ -77,6 +85,7 @@ mainApp.controller("TestController", ['$scope', '$timeout', 'testService',
             totalServerItems: 'totalServerItems',
             pagingOptions: $scope.pagingOptions,
             filterOptions: $scope.filterOptions,
+            selectedItems: [],
             columnDefs: [{
                 field: 'ID',
                 width: 40,
