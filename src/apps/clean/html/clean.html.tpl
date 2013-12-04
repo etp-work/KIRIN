@@ -12,6 +12,9 @@
                     <div class="input-group">
                          <a href="#" class="input-group-addon selectAll" ki-selectall="caches"><span class="glyphicon glyphicon-unchecked"></span>&nbsp;&nbsp;Select All</a>
                          <input type="text" ng-model="searchCache" class="form-control" placeholder="Search..."/>
+                         <span class="input-group-btn">
+                             <button class="btn btn-default" ki-delmonitor="caches" type="button">Delete</button>
+                         </span>
                      </div>
                 </div>
             </div>
@@ -29,6 +32,9 @@
                     <div class="input-group">
                          <a href="#" class="input-group-addon selectAll" ki-selectall="wars"><span class="glyphicon glyphicon-unchecked"></span>&nbsp;&nbsp;Select All</a>
                          <input type="text" ng-model="searchWar" class="form-control" placeholder="Search..."/>
+                         <span class="input-group-btn">
+                             <button class="btn btn-default" ki-delmonitor="wars" type="button">Delete</button>
+                         </span>
                      </div>
                 </div>
             </div>
