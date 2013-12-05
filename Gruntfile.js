@@ -227,13 +227,7 @@ module.exports = function(grunt) {
                 linux64: false,
                 keep_nw: false
             },
-            dev_internal: {
-                options: {
-                    download_url: 'http://142.133.49.165/node-webkit/'
-                },
-                src: 'build/generated/**/*'
-            },
-            dev_external: {
+            dev: {
                 src: 'build/generated/**/*'
             }
         },
@@ -269,10 +263,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-exec');
 
     grunt.registerTask('default', ['clean:generated', 'sass:dev', 'concat:dev', 'copy:dev', 'template:dev', 'connect:server', 'watch:dev']);
-    grunt.registerTask('exei', ['clean:generated', 'clean:release', 'sass:dev', 'concat:dev', 'exec:dev', 'copy:dev', 'template:dev', 'nodewebkit:dev_internal']);
-    grunt.registerTask('exee', ['clean:generated', 'clean:release', 'sass:dev', 'concat:dev', 'exec:dev', 'copy:dev', 'template:dev', 'nodewebkit:dev_external']);
+    grunt.registerTask('devexe', ['clean:generated', 'clean:release', 'sass:dev', 'concat:dev', 'exec:dev', 'copy:dev', 'template:dev', 'nodewebkit:dev']);
 
     grunt.registerTask('dist', ['clean:release', 'clean:generated', 'uglify:dist', 'sass:dist', 'cssmin:dist', 'concat:dist', 'copy:dist', 'template:dist', 'connect:server', 'watch:dev']);
-    grunt.registerTask('disti', ['clean:release', 'clean:generated', 'uglify:dist', 'sass:dist', 'cssmin:dist', 'concat:dist', 'exec:dist', 'copy:dist', 'template:dist', 'nodewebkit:dev_internal']);
-    grunt.registerTask('diste', ['clean:release', 'clean:generated', 'uglify:dist', 'sass:dist', 'cssmin:dist', 'concat:dist', 'exec:dist', 'copy:dist', 'template:dist', 'nodewebkit:dev_external']);
+    grunt.registerTask('distexe', ['clean:release', 'clean:generated', 'uglify:dist', 'sass:dist', 'cssmin:dist', 'concat:dist', 'exec:dist', 'copy:dist', 'template:dist', 'nodewebkit:dev']);
 };
