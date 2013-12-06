@@ -7,7 +7,7 @@ mainApp.directive('kiDelmonitor', [
         return {
             restrict: 'A',
             link: function (scope, element, attrs, controller) {
-                var watchModel = attrs['kiDelmonitor'];
+                var watchModel = attrs.kiDelmonitor;
                 scope.$watch(watchModel, function(newValue, oldValue){
                     var disabled = true;
                     for(var i in newValue){
@@ -20,6 +20,6 @@ mainApp.directive('kiDelmonitor', [
                 }, true);
                    
             }
-        }
+        };
    }]
 );

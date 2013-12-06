@@ -11,7 +11,7 @@ mainApp.directive('kiSelectall', [
                     true: 'glyphicon-check',
                     false: 'glyphicon-unchecked'
                 };
-                var watchModel = attrs['kiSelectall'];
+                var watchModel = attrs.kiSelectall;
                 var span = element.children().first();
                 element.on('click', function(e){
                     if(span.hasClass(cssMap[true])){
@@ -31,6 +31,6 @@ mainApp.directive('kiSelectall', [
                     e.preventDefault();
                 });
             }
-        }
+        };
    }]
 );

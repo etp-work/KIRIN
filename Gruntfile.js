@@ -247,6 +247,9 @@ module.exports = function(grunt) {
                     base: 'build/generated/'
                 }
             }
+        },
+        jshint: {
+            all: ['Gruntfile.js', 'src/**/*.js', '!src/node_modules/**/*']
         }
     });
 
@@ -261,10 +264,11 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-exec');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
 
-    grunt.registerTask('default', ['clean:generated', 'sass:dev', 'concat:dev', 'copy:dev', 'template:dev', 'connect:server', 'watch:dev']);
-    grunt.registerTask('devexe', ['clean:generated', 'clean:release', 'sass:dev', 'concat:dev', 'exec:dev', 'copy:dev', 'template:dev', 'nodewebkit:dev']);
+    grunt.registerTask('default', ['clean:generated', 'jshint', 'sass:dev', 'concat:dev', 'copy:dev', 'template:dev', 'connect:server', 'watch:dev']);
+    grunt.registerTask('devexe', ['clean:generated', 'clean:release', 'jshint', 'sass:dev', 'concat:dev', 'exec:dev', 'copy:dev', 'template:dev', 'nodewebkit:dev']);
 
-    grunt.registerTask('dist', ['clean:release', 'clean:generated', 'uglify:dist', 'sass:dist', 'cssmin:dist', 'concat:dist', 'copy:dist', 'template:dist', 'connect:server', 'watch:dev']);
-    grunt.registerTask('distexe', ['clean:release', 'clean:generated', 'uglify:dist', 'sass:dist', 'cssmin:dist', 'concat:dist', 'exec:dist', 'copy:dist', 'template:dist', 'nodewebkit:dev']);
+    grunt.registerTask('dist', ['clean:release', 'clean:generated', 'jshint', 'uglify:dist', 'sass:dist', 'cssmin:dist', 'concat:dist', 'copy:dist', 'template:dist', 'connect:server', 'watch:dev']);
+    grunt.registerTask('distexe', ['clean:release', 'clean:generated', 'jshint', 'uglify:dist', 'sass:dist', 'cssmin:dist', 'concat:dist', 'exec:dist', 'copy:dist', 'template:dist', 'nodewebkit:dev']);
 };

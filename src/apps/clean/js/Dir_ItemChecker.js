@@ -11,7 +11,7 @@ mainApp.directive('kiItemchecker', [
                     true: 'glyphicon-check',
                     false: 'glyphicon-unchecked'
                 };
-                var watchObj = attrs['kiItemchecker'];
+                var watchObj = attrs.kiItemchecker;
                 scope.$watch(watchObj + ".selected", function(newValue, oldValue){
                     element.removeClass(cssMap[oldValue]);
                     element.addClass(cssMap[newValue]);
@@ -23,6 +23,6 @@ mainApp.directive('kiItemchecker', [
                     e.preventDefault();
                 });
             }
-        }
+        };
    }]
 );

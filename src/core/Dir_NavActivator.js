@@ -36,6 +36,6 @@ mainApp.directive('kiNavactivator', ['$route',
                 });
 
             }
-        }
+        };
    }]
 );

@@ -29,7 +29,7 @@ mainApp.service('testService', ['$resource', '$q', 'preMgr',
 					Message: result.message
 				};
 				testResults.push(testResult);
-			};
+			}
 			return testResults;
 		}
 

@@ -12,7 +12,7 @@ mainApp.directive('kiDirtycheck', [
         return {
             restrict: 'A',
             link: function (scope, element, attrs, controller) {
-                var oprops = attrs['kiDirtycheck'].split(',');
+                var oprops = attrs.kiDirtycheck.split(',');
                 var nprops = {};
                 var nkeys = [];
                 angular.forEach(oprops, function(value){
@@ -39,6 +39,6 @@ mainApp.directive('kiDirtycheck', [
                     }
                 });
             }
-        }
+        };
    }]
 );

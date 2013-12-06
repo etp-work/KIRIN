@@ -9,6 +9,6 @@ mainApp.directive('kiTooltips', [
             link: function (scope, element, attrs, controller) {
                 $(element).tooltip();
             }
-        }
+        };
    }]
 );

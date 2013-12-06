@@ -34,7 +34,7 @@ mainApp.factory('cleanItemCollector', ['$q', 'notificationMgr', '$rootScope', 'p
             return false;
         }
         if(endPart.indexOf('\\') >-1){
-            return false
+            return false;
         }
         return true;
     };
@@ -53,7 +53,7 @@ mainApp.factory('cleanItemCollector', ['$q', 'notificationMgr', '$rootScope', 'p
             return false;
         }
         if(endPart.indexOf('\\') > -1){
-            return false
+            return false;
         }
         return true;
     };

@@ -13,6 +13,6 @@ mainApp.directive('kiNotification', ['notificationMgr',
                     notificationMgr.removeNotification(notification.id);
                 };
             }
-        }
+        };
    }]
 );

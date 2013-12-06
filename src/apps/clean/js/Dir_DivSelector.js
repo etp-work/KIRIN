@@ -29,6 +29,6 @@ mainApp.directive('kiDivselector', [
                     e.preventDefault();
                 });
             }
-        }
+        };
    }]
 );

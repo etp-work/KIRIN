@@ -41,9 +41,9 @@ mainApp.factory('notificationMgr', ['$timeout',
                 title = "Oh shit!";
                 msg = options;
             }else{
-                type = options['type'] ? options['type'] : 'danger';
-                title = options['title'] ? options['title'] : 'glyphicon-flash';
-                msg = options['msg'] ? options['msg'] : 'Something wrong, man!';
+                type = options.type ? options.type : 'danger';
+                title = options.title ? options.title : 'glyphicon-flash';
+                msg = options.msg ? options.msg : 'Something wrong, man!';
             }
 
             var timer = $timeout(function(){
