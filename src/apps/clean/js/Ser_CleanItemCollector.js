@@ -1,7 +1,7 @@
 /**
  *  Define the clean item collector factory
  */
-mainApp.factory('cleanItemCollector', ['$q', 'notificationMgr', '$rootScope', 'preMgr', 'nodejs', function($q, notificationMgr, $rootScope, preMgr, nodejs){
+mainApp.factory('cleanItemCollector', ['$q', 'notificationMgr', '$rootScope', 'preMgr', '$timeout', 'nodejs', function($q, notificationMgr, $rootScope, preMgr, $timeout, nodejs){
     var factory = {};
     var items = {
         widget: [],
@@ -59,16 +59,16 @@ mainApp.factory('cleanItemCollector', ['$q', 'notificationMgr', '$rootScope', 'p
     };
     var add = function(filename, arr, event){
         for(var i in arr){
-            if(endswith(filename, arr[i].name)){
+            if(filename === arr[i].name){
                 return;
             }
         }
-        arr.push({name: filename.substring(operaHome.length), selected: false});
+        arr.push({name: filename, selected: false});
         $rootScope.$broadcast(event, arr);
     };
     var remove = function(filename, arr, event){
         for(var i in arr){
-            if(endswith(filename, arr[i].name)){
+            if(filename === arr[i].name){
                 arr.splice(i, 1);
                 $rootScope.$broadcast(event, arr);
                 return;
@@ -81,21 +81,21 @@ mainApp.factory('cleanItemCollector', ['$q', 'notificationMgr', '$rootScope', 'p
 
     factory.retrieveWidgetCaches = function(){
         var deferred = $q.defer();
-        fs.readdir(operaHome, function(err, files){
-            if(err){
-                deferred.reject(err);
-                return; 
-            }
-            items.widget = [];
-            angular.forEach(files, function(value){
-                if(value !== 'Opera' && value !== 'Opera Widget Installer'){
-                    this.push({name: value, selected: false});
+        if(!cacheListenerStarted){
+            fs.readdir(operaHome, function(err, files){
+                if(err){
+                    deferred.reject(err);
+                    return; 
                 }
-            }, items.widget);
+                items.widget = [];
+                angular.forEach(files, function(value){
+                    if(value !== 'Opera' && value !== 'Opera Widget Installer'){
+                        this.push({name: value, selected: false});
+                    }
+                }, items.widget);
 
-            deferred.resolve(items.widget);
-            
-            if(!cacheListenerStarted){
+                deferred.resolve(items.widget);
+                
                 watch.createMonitor(operaHome, {
                     ignoreDotFiles: true
                 }, function (monitor) {
@@ -103,44 +103,50 @@ mainApp.factory('cleanItemCollector', ['$q', 'notificationMgr', '$rootScope', 'p
                         if(!cacheFilter(f ,stat)){
                             return;
                         }
-                        add(f, items.widget, 'widgetCacheChanged');
+                        add(f.substring(operaHome.length), items.widget, 'widgetCacheChanged');
                     });
                     monitor.on("removed", function (f, stat) {
-                        remove(f, items.widget, 'widgetCacheChanged');
+                        remove(f.substring(operaHome.length), items.widget, 'widgetCacheChanged');
                     });
                 });
+
                 cacheListenerStarted = true;
-            }
-        });
+            });
+        }else{
+            $timeout(function(){
+                deferred.resolve(items.widget);
+            }, 500);
+        }
         return deferred.promise;
     };
 
     factory.retrieveTomcatWars = function(){
         var deferred = $q.defer();
-        tomcatHome = preMgr.get('tomcatPath') ? endswith(preMgr.get('tomcatPath'), '\\') ? preMgr.get('tomcatPath') + 'webapps' : preMgr.get('tomcatPath') + '\\webapps' : "undefined";
-        fs.readdir(tomcatHome, function(err, files){
-            if(err){
-                deferred.reject(err);
-                return; 
-            }
-            items.tomcat = [];
-            $.each(files, function(i, file){
-                if(file === 'ROOT' || file === 'host-manager' || file === 'manager'){
-                    return;
-                }
-                if(!startswith(file, 'portal') && !startswith(file, 'public') && !startswith(file, 'private') && !startswith(file, 'static')){
-                    return;
-                }
-                var stat = fs.statSync(tomcatHome + "\\" + file);
-                if(!stat.isDirectory()){
-                    return;
-                }
-                items.tomcat.push({name: file, selected: false});
-            });
+        tomcatHome = preMgr.get('tomcatPath') ? endswith(preMgr.get('tomcatPath'), '\\') ? preMgr.get('tomcatPath') + 'webapps\\' : preMgr.get('tomcatPath') + '\\webapps\\' : "undefined";
 
-            deferred.resolve(items.tomcat);
+        if(!tomcatListenerStarted){
+            fs.readdir(tomcatHome, function(err, files){
+                if(err){
+                    deferred.reject(err);
+                    return; 
+                }
+                items.tomcat = [];
+                $.each(files, function(i, file){
+                    if(file === 'ROOT' || file === 'host-manager' || file === 'manager'){
+                        return;
+                    }
+                    if(!startswith(file, 'portal') && !startswith(file, 'public') && !startswith(file, 'private') && !startswith(file, 'static')){
+                        return;
+                    }
+                    var stat = fs.statSync(tomcatHome + "\\" + file);
+                    if(!stat.isDirectory()){
+                        return;
+                    }
+                    items.tomcat.push({name: file, selected: false});
+                });
 
-            if(!tomcatListenerStarted){
+                deferred.resolve(items.tomcat);
+                
                 watch.createMonitor(tomcatHome, {
                     ignoreDotFiles: true
                 }, function (monitor) {
@@ -148,15 +154,20 @@ mainApp.factory('cleanItemCollector', ['$q', 'notificationMgr', '$rootScope', 'p
                         if(!warFilter(f ,stat)){
                             return;
                         }
-                        add(f, items.tomcat, 'tomcatWarChanged');
+                        add(f.substring(tomcatHome.length), items.tomcat, 'tomcatWarChanged');
                     });
                     monitor.on("removed", function (f, stat) {
-                        remove(f, items.tomcat, 'tomcatWarChanged');
+                        remove(f.substring(tomcatHome.length), items.tomcat, 'tomcatWarChanged');
                     });
                 });
+
                 tomcatListenerStarted = true;
-            }
-        });
+            });
+        }else{
+            $timeout(function(){
+                deferred.resolve(items.tomcat);
+            }, 500);
+        }
         return deferred.promise;
     };
     
