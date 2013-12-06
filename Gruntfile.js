@@ -38,6 +38,10 @@ module.exports = function(grunt) {
             }
         },
         sass: {
+            options: {
+                trace: true,
+                check: true
+            },
             dev: {
                 files: [{
                     expand: true,
