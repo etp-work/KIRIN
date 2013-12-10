@@ -148,9 +148,7 @@ To debug with browser, it requires you to install [livereload](http://livereload
 #### Debug
 
 * `grunt`, execute `default` task. Compile source code to `%root_folder%/build/generated/` folder, and start up a local server on `127.0.0.1:9898`. Open a browser which you have `livereload` addon installed, visite the url `http://127.0.0.1:9898/`, and enable the `livereload` addon. Once you change the source code, the browser will be refreshed automatically.
-* `grunt exei` execute `exei` task. Exe file created in `%root_folder%/build/releases/KIRIN/win/KIRIN/` folder.
-* `grunt exee` execute `exee` task. The same as above, but different `node-webkit` server.
+* `grunt devexe` execute `devexe` task. Exe file created in `%root_folder%/build/releases/KIRIN/win/KIRIN/` folder.
 * `grunt dist` execute `dist` task. The same as `default` task. But minified source code.
-* `grunt disti` execute `disti` task. The same as `exei` task. But minified source code.
-* `grunt diste` execute `diste` task. The same as above, but different `node-webkit` server.
+* `grunt distexe` execute `distexe` task. The same as `exei` task. But minified source code.
 
