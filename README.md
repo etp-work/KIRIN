@@ -85,6 +85,15 @@ git config --local alias.br branch
 
 Note: `name` and `email` should be modified manually.
 
+Open `Git` installation directory, find `%Git_home%\etc\git-completion.bash`, append following content:
+
+```Shell
+alias ls='ls --show-control-chars --color=auto'
+alias ll='ls -all'
+alias pull='git pull --release'
+alias push='git push'
+```
+
 #### Install Grunt Command Line Interface
 
 Run following command in Git Bash:
